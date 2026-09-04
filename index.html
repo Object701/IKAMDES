@@ -1,23 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Fortes — Defy the Elements in Style</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230A0F1D'/><path d='M16 6a10 10 0 0 0-10 10h20a10 10 0 0 0-10-10z' fill='%2300F0FF'/><path d='M16 16v9a2 2 0 0 0 4 0' stroke='%23FF3366' stroke-width='2' fill='none' stroke-linecap='round'/></svg>">
-    <!-- Tailwind CSS -->
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Canvas Confetti -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -43,18 +36,19 @@
             }
         }
     </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
     <style>
         .glass-panel {
-            background: rgba(19, 27, 46, 0.75);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .glass-nav {
-            background: rgba(10, 15, 29, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
         .vivid-gradient-text {
             background: linear-gradient(135deg, #00F0FF 0%, #0066FF 50%, #FF3366 100%);
@@ -78,199 +72,220 @@
             70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 51, 102, 0); }
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 51, 102, 0); }
         }
-        /* Custom scrollbar */
+        button *, a * {
+            pointer-events: none;
+        }
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0A0F1D; }
         ::-webkit-scrollbar-thumb { background: #1f293d; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #0066FF; }
+
+        body, header, main, footer, div, section, button, input, .glass-panel {
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
     </style>
 </head>
-<body class="bg-brand-dark text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-accent selection:text-white">
+<body class="bg-slate-50 dark:bg-brand-dark text-slate-800 dark:text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-accent selection:text-white">
 
     <!-- Announcement Bar -->
-    <div class="bg-gradient-to-r from-brand-vivid via-indigo-600 to-brand-accent text-white text-xs py-2 px-4 text-center font-semibold tracking-wide flex items-center justify-center gap-2">
-        <i data-lucide="zap" class="w-4 h-4 animate-bounce">="w-4 h-4 animate-bounce"</i>
+    <div class="bg-gradient-to-r from-brand-vivid via-indigo-600 to-brand-accent text-white text-xs py-2 px-4 text-center font-semibold tracking-wide flex items-center justify-center gap-2 relative z-30">
+        <i data-lucide="zap" class="w-4 h-4 animate-bounce"></i>
         <span>SPRING SALE: Enjoy 20% OFF all Windproof Series with code <span class="underline decoration-wavy">STORMPROOF</span></span>
         <i data-lucide="umbrella" class="w-4 h-4 hidden sm:inline-block"></i>
     </div>
 
     <!-- Header Navigation -->
-    <header class="sticky top-0 z-40 glass-nav transition-all duration-300">
+    <header class="sticky top-0 z-40 bg-white/90 dark:bg-brand-dark/85 backdrop-blur-md border-b border-slate-200 dark:border-slate-800/80 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
-            <a href="#" class="flex items-center gap-3 group">
+            <a href="#" class="flex items-center gap-3 group cursor-pointer">
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-vivid to-brand-accent p-0.5 shadow-lg shadow-brand-vivid/20 group-hover:scale-105 transition-transform">
-                    <div class="w-full h-full bg-brand-dark rounded-[10px] flex items-center justify-center">
+                    <div class="w-full h-full bg-slate-900 dark:bg-brand-dark rounded-[10px] flex items-center justify-center">
                         <i data-lucide="umbrella" class="w-5 h-5 text-brand-neon group-hover:rotate-12 transition-transform duration-300"></i>
                     </div>
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-display text-2xl font-extrabold tracking-tight text-white group-hover:text-brand-neon transition-colors">THE FORTES</span>
-                    <span class="text-[10px] uppercase tracking-widest text-slate-400 font-semibold -mt-1">Architectural Rainwear</span>
+                    <span class="font-display text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white group-hover:text-brand-vivid dark:group-hover:text-brand-neon transition-colors">THE FORTES</span>
+                    <span class="text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-400 font-semibold -mt-1">Architectural Rainwear</span>
                 </div>
             </a>
 
             <!-- Desktop Nav Links -->
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="#catalog" class="text-slate-300 hover:text-brand-neon transition-colors">Catalog</a>
-                <a href="#features" class="text-slate-300 hover:text-brand-neon transition-colors">Technology</a>
-                <a href="#reviews" class="text-slate-300 hover:text-brand-neon transition-colors">Reviews</a>
-                <a href="#footer" class="text-slate-300 hover:text-brand-neon transition-colors">Support</a>
+                <a href="#catalog" class="text-slate-600 dark:text-slate-300 hover:text-brand-vivid dark:hover:text-brand-neon transition-colors cursor-pointer">Catalog</a>
+                <a href="#features" class="text-slate-600 dark:text-slate-300 hover:text-brand-vivid dark:hover:text-brand-neon transition-colors cursor-pointer">Technology</a>
+                <a href="#about" class="text-slate-600 dark:text-slate-300 hover:text-brand-vivid dark:hover:text-brand-neon transition-colors cursor-pointer">About Us</a>
+                <a href="#reviews" class="text-slate-600 dark:text-slate-300 hover:text-brand-vivid dark:hover:text-brand-neon transition-colors cursor-pointer">Reviews</a>
+                <a href="#footer" class="text-slate-600 dark:text-slate-300 hover:text-brand-vivid dark:hover:text-brand-neon transition-colors cursor-pointer">Support</a>
             </nav>
 
             <!-- Search Bar & Actions -->
             <div class="flex items-center gap-3 sm:gap-4">
                 <div class="relative hidden sm:block w-48 lg:w-64">
-                    <input type="text" id="searchInput" oninput="filterProducts()" placeholder="Search umbrellas..." 
-                        class="w-full bg-slate-900/80 border border-slate-800 rounded-full py-2 pl-9 pr-4 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-brand-vivid focus:ring-1 focus:ring-brand-vivid transition-all">
-                    <i data-lucide="search" class="w-4 h-4 text-slate-500 absolute left-3 top-2.5"></i>
+                    <input type="text" id="searchInput" oninput="syncAndFilter(this.value)" placeholder="Search umbrellas..." 
+                        class="w-full bg-slate-100 dark:bg-slate-900/80 border border-slate-300 dark:border-slate-800 rounded-full py-2 pl-9 pr-4 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-brand-vivid focus:ring-1 focus:ring-brand-vivid transition-all">
+                    <i data-lucide="search" class="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3 top-2.5"></i>
                 </div>
 
+                <!-- Theme Toggle Button -->
+                <button onclick="toggleTheme()" id="themeToggleBtn" type="button" class="p-2.5 rounded-full bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700 text-amber-500 dark:text-amber-400 border border-slate-300 dark:border-slate-700/60 transition-all hover:scale-105 active:scale-95 flex items-center justify-center cursor-pointer" title="Toggle Theme" aria-label="Toggle Light/Dark Theme">
+                    <svg id="themeSunIcon" class="w-5 h-5 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                    <svg id="themeMoonIcon" class="w-5 h-5 hidden text-indigo-600 dark:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                </button>
+
                 <!-- Cart Button -->
-                <button onclick="toggleCart()" class="relative p-2.5 rounded-full bg-slate-800/80 hover:bg-slate-700 text-white border border-slate-700/60 transition-all hover:scale-105 active:scale-95" aria-label="View Cart">
+                <button onclick="toggleCart()" type="button" class="relative p-2.5 rounded-full bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-white border border-slate-300 dark:border-slate-700/60 transition-all hover:scale-105 active:scale-95 cursor-pointer" aria-label="View Cart">
                     <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-                    <span id="cartBadge" class="hidden absolute -top-1 -right-1 bg-brand-accent text-white font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-brand-dark badge-pulse">0</span>
+                    <span id="cartBadge" class="hidden absolute -top-1 -right-1 bg-brand-accent text-white font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-white dark:border-brand-dark badge-pulse">0</span>
                 </button>
 
                 <!-- Mobile Menu Toggle -->
-                <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-300 hover:text-white">
+                <button onclick="toggleMobileMenu()" type="button" class="md:hidden p-2 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white cursor-pointer">
                     <i data-lucide="menu" id="menuIcon" class="w-6 h-6"></i>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Menu Dropdown -->
-        <div id="mobileMenu" class="hidden md:hidden bg-brand-card/95 border-b border-slate-800 px-6 py-4 space-y-3 text-sm">
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-brand-card/95 border-b border-slate-200 dark:border-slate-800 px-6 py-4 space-y-3 text-sm">
             <div class="relative mb-3">
                 <input type="text" id="mobileSearchInput" oninput="syncAndFilter(this.value)" placeholder="Search umbrellas..." 
-                    class="w-full bg-slate-900 border border-slate-800 rounded-full py-2 pl-9 pr-4 text-xs text-white placeholder-slate-500">
-                <i data-lucide="search" class="w-4 h-4 text-slate-500 absolute left-3 top-2.5"></i>
+                    class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-full py-2 pl-9 pr-4 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500">
+                <i data-lucide="search" class="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3 top-2.5"></i>
             </div>
-            <a href="#catalog" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-brand-neon">Catalog</a>
-            <a href="#features" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-brand-neon">Technology</a>
-            <a href="#reviews" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-brand-neon">Reviews</a>
-            <a href="#footer" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-brand-neon">Support</a>
+            <a href="#catalog" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 dark:text-slate-200 hover:text-brand-vivid dark:hover:text-brand-neon">Catalog</a>
+            <a href="#features" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 dark:text-slate-200 hover:text-brand-vivid dark:hover:text-brand-neon">Technology</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 dark:text-slate-200 hover:text-brand-vivid dark:hover:text-brand-neon">About Us</a>
+            <a href="#reviews" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 dark:text-slate-200 hover:text-brand-vivid dark:hover:text-brand-neon">Reviews</a>
+            <a href="#footer" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 dark:text-slate-200 hover:text-brand-vivid dark:hover:text-brand-neon">Support</a>
         </div>
     </header>
 
     <main class="flex-grow">
-        <!-- Hero Section -->
-        <section class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-32">
-            <!-- Background Decorative Glows -->
-            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-vivid/15 rounded-full blur-[140px] pointer-events-none"></div>
-            <div class="absolute bottom-10 right-10 w-[400px] h-[400px] bg-brand-accent/15 rounded-full blur-[120px] pointer-events-none"></div>
-
+        <!-- Hero Section Promotional Banner -->
+        <section class="relative overflow-hidden pt-8 pb-16 lg:pt-14 lg:pb-24">
+            <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-tr from-brand-vivid/20 via-brand-neon/10 to-brand-accent/20 rounded-full blur-[150px] pointer-events-none"></div>
+            
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="relative glass-panel bg-white/70 dark:bg-brand-card/70 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl p-6 sm:p-10 lg:p-14 shadow-2xl overflow-hidden">
+                    <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-vivid/15 rounded-full blur-3xl pointer-events-none"></div>
                     
-                    <!-- Left Hero Content -->
-                    <div class="lg:col-span-7 text-center lg:text-left space-y-6">
-                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-brand-neon/30 text-brand-neon text-xs font-semibold uppercase tracking-wider">
-                            <span class="w-2 h-2 rounded-full bg-brand-neon animate-ping"></span>
-                            Engineering Perfection • Tested to 75 MPH Winds
-                        </div>
-
-                        <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none text-white">
-                            Never Get Caught In The <span class="vivid-gradient-text">Storm Again.</span>
-                        </h1>
-
-                        <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-                            Ultra-durable, carbon-fiber reinforced canopy systems crafted for modern urban explorers. High-performance weather protection with vibrant aesthetics.
-                        </p>
-
-                        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                            <a href="#catalog" class="w-full sm:w-auto px-8 py-4 rounded-full vivid-btn-gradient text-white font-bold text-sm tracking-wide shadow-lg shadow-brand-vivid/25 flex items-center justify-center gap-2 group">
-                                <span>Explore The Collection</span>
-                                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                            </a>
-                            <a href="#features" class="w-full sm:w-auto px-8 py-4 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-sm flex items-center justify-center gap-2 transition-all">
-                                <i data-lucide="shield-check" class="w-4 h-4 text-brand-neon"></i>
-                                <span>Storm Technology</span>
-                            </a>
-                        </div>
-
-                        <!-- Stats Bar -->
-                        <div class="pt-8 border-t border-slate-800/80 grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
-                            <div>
-                                <p class="font-display text-2xl font-bold text-white">75 MPH</p>
-                                <p class="text-xs text-slate-400">Wind Resistance</p>
+                    <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+                        <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-brand-vivid/10 via-brand-accent/10 to-brand-neon/10 border border-brand-accent/40 text-brand-accent dark:text-brand-neon text-xs sm:text-sm font-extrabold uppercase tracking-widest shadow-sm">
+                                <span class="flex h-2.5 w-2.5 relative">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-accent"></span>
+                                </span>
+                                <span>SPECIAL PROMO • UP TO 30% OFF</span>
+                                <span class="bg-brand-accent text-white text-[10px] font-bold px-2 py-0.5 rounded-md ml-1">CODE: STORMPROOF</span>
                             </div>
-                            <div>
-                                <p class="font-display text-2xl font-bold text-white">UPF 50+</p>
-                                <p class="text-xs text-slate-400">UV Protection</p>
-                            </div>
-                            <div>
-                                <p class="font-display text-2xl font-bold text-white">Lifetime</p>
-                                <p class="text-xs text-slate-400">Frame Warranty</p>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Right Hero Visual Card -->
-                    <div class="lg:col-span-5 relative">
-                        <div class="relative mx-auto max-w-md lg:max-w-none">
-                            <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-brand-neon via-brand-vivid to-brand-accent opacity-40 blur-xl"></div>
-                            
-                            <div class="relative glass-panel rounded-3xl p-6 sm:p-8 overflow-hidden group">
-                                <div class="absolute top-4 right-4 bg-brand-accent/20 border border-brand-accent text-brand-accent text-xs font-bold px-3 py-1 rounded-full uppercase">
-                                    Flagship
+                            <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] text-slate-900 dark:text-white">
+                                NEW COLLECTION <span class="vivid-gradient-text">2026</span>
+                            </h1>
+
+                            <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                                Next-generation rainwear engineered with carbon-fiber anti-inversion ribs, titanium UV shields, and hydrophobic stealth weave. Defy high winds and torrential downpours in ultimate luxury style.
+                            </p>
+
+                            <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                                <a href="#catalog" class="w-full sm:w-auto px-9 py-4 rounded-2xl vivid-btn-gradient text-white font-extrabold text-base tracking-wide shadow-xl shadow-brand-vivid/30 flex items-center justify-center gap-3 group cursor-pointer active:scale-95 transition-all">
+                                    <span>Shop Now</span>
+                                    <i data-lucide="arrow-down" class="w-5 h-5 group-hover:translate-y-1 transition-transform"></i>
+                                </a>
+                                <a href="#features" class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-slate-100 dark:bg-slate-800/90 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 font-bold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer">
+                                    <i data-lucide="shield-check" class="w-4 h-4 text-brand-vivid dark:text-brand-neon"></i>
+                                    <span>Explore Technology</span>
+                                </a>
+                            </div>
+
+                            <div class="pt-6 border-t border-slate-200 dark:border-slate-800/80 flex flex-wrap justify-center lg:justify-start items-center gap-6 text-xs text-slate-500 dark:text-slate-400 font-medium">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="truck" class="w-4 h-4 text-brand-vivid dark:text-brand-neon"></i>
+                                    <span>Free Express Shipping</span>
                                 </div>
-                                <div class="relative h-64 sm:h-80 w-full flex items-center justify-center overflow-hidden rounded-2xl bg-slate-900/60 mb-6">
-                                    <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80" 
-                                         alt="The Fortress Apex Umbrella" 
-                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-transparent"></div>
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="shield" class="w-4 h-4 text-brand-vivid dark:text-brand-neon"></i>
+                                    <span>Lifetime Frame Warranty</span>
                                 </div>
-                                <div class="space-y-2">
-                                    <div class="flex justify-between items-center">
-                                        <h3 class="font-display text-xl font-bold text-white">The Fortress Apex Edition</h3>
-                                        <span class="text-xl font-extrabold text-brand-neon">$89.00</span>
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="rotate-ccw" class="w-4 h-4 text-brand-vivid dark:text-brand-neon"></i>
+                                    <span>30-Day Risk Free Return</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-5 relative">
+                            <div class="relative mx-auto max-w-md lg:max-w-none">
+                                <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-brand-neon via-brand-vivid to-brand-accent opacity-50 blur-xl pointer-events-none"></div>
+                                
+                                <div class="relative glass-panel bg-white dark:bg-slate-900/90 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden group">
+                                    <div class="absolute top-4 right-4 bg-gradient-to-r from-brand-accent to-red-500 text-white text-[11px] font-extrabold px-3 py-1 rounded-full uppercase z-10 shadow-md">
+                                        2026 Flagship
                                     </div>
-                                    <p class="text-xs text-slate-400">Dual-canopy hydrophobic stealth weave with ergonomic matte silicone handle.</p>
-                                    <button onclick="quickAddToCart(1)" class="w-full mt-4 py-3 bg-brand-vivid hover:bg-blue-600 text-white rounded-xl font-semibold text-sm transition-all flex items-center justify-center gap-2">
-                                        <i data-lucide="shopping-cart" class="w-4 h-4"></i>
-                                        <span>Quick Add to Cart</span>
-                                    </button>
+                                    <div onclick="openQuickView(1)" class="relative h-64 sm:h-72 w-full flex items-center justify-center overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-950 mb-5 cursor-pointer">
+                                        <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80" 
+                                             alt="The Fortress Apex 2026 Edition" 
+                                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <span class="text-[10px] font-bold tracking-widest text-brand-vivid dark:text-brand-neon uppercase">2026 Release</span>
+                                                <h3 onclick="openQuickView(1)" class="font-display text-lg font-extrabold text-slate-900 dark:text-white cursor-pointer hover:text-brand-vivid dark:hover:text-brand-neon transition-colors">The Fortress Apex Edition</h3>
+                                            </div>
+                                            <div class="text-right">
+                                                <span class="text-xs text-slate-400 line-through block">$110.00</span>
+                                                <span class="text-xl font-extrabold text-brand-accent dark:text-brand-neon">$89.00</span>
+                                            </div>
+                                        </div>
+                                        <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-2">Dual-canopy hydrophobic stealth weave with ergonomic matte silicone handle.</p>
+                                        <button onclick="quickAddToCart(1)" type="button" class="w-full py-3 bg-brand-vivid hover:bg-blue-600 text-white rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-vivid/20 cursor-pointer active:scale-95">
+                                            <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                                            <span>Quick Add • Save 20%</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Feature / Tech Highlights Section -->
-        <section id="features" class="py-16 bg-slate-900/50 border-y border-slate-800">
+        <section id="features" class="py-16 bg-slate-100/80 dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-2xl mx-auto mb-12">
-                    <h2 class="font-display text-2xl sm:text-3xl font-bold text-white mb-3">Engineered For Extreme Weather</h2>
-                    <p class="text-slate-400 text-sm">Every Fortes canopy is built with aerospace-grade materials designed to withstand torrential downpours and severe gales.</p>
+                    <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-3">Engineered For Extreme Weather</h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">Every Fortes canopy is built with aerospace-grade materials designed to withstand torrential downpours and severe gales.</p>
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-6">
-                    <div class="glass-panel p-6 rounded-2xl hover:border-brand-vivid/50 transition-all">
+                    <div class="glass-panel bg-white dark:bg-brand-card/80 border border-slate-200 dark:border-slate-800/80 p-6 rounded-2xl hover:border-brand-vivid/50 transition-all shadow-sm">
                         <div class="w-12 h-12 rounded-xl bg-brand-vivid/10 border border-brand-vivid/30 flex items-center justify-center text-brand-vivid mb-4">
                             <i data-lucide="wind" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white mb-2">Anti-Inversion Ribs</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">Flex-tensioned carbon fiber ribs bounce back effortlessly without snapping, even when flipped by hurricane-level gusts.</p>
+                        <h3 class="font-display text-lg font-bold text-slate-900 dark:text-white mb-2">Anti-Inversion Ribs</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">Flex-tensioned carbon fiber ribs bounce back effortlessly without snapping, even when flipped by hurricane-level gusts.</p>
                     </div>
 
-                    <div class="glass-panel p-6 rounded-2xl hover:border-brand-neon/50 transition-all">
-                        <div class="w-12 h-12 rounded-xl bg-brand-neon/10 border border-brand-neon/30 flex items-center justify-center text-brand-neon mb-4">
+                    <div class="glass-panel bg-white dark:bg-brand-card/80 border border-slate-200 dark:border-slate-800/80 p-6 rounded-2xl hover:border-brand-neon/50 transition-all shadow-sm">
+                        <div class="w-12 h-12 rounded-xl bg-brand-neon/10 border border-brand-neon/30 flex items-center justify-center text-brand-vivid dark:text-brand-neon mb-4">
                             <i data-lucide="droplets" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white mb-2">Nano-Hydrophobic Fabric</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">Water droplets bead instantly and slide off. Shake once, and your umbrella is dry before you step indoors.</p>
+                        <h3 class="font-display text-lg font-bold text-slate-900 dark:text-white mb-2">Nano-Hydrophobic Fabric</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">Water droplets bead instantly and slide off. Shake once, and your umbrella is dry before you step indoors.</p>
                     </div>
 
-                    <div class="glass-panel p-6 rounded-2xl hover:border-brand-accent/50 transition-all">
+                    <div class="glass-panel bg-white dark:bg-brand-card/80 border border-slate-200 dark:border-slate-800/80 p-6 rounded-2xl hover:border-brand-accent/50 transition-all shadow-sm">
                         <div class="w-12 h-12 rounded-xl bg-brand-accent/10 border border-brand-accent/30 flex items-center justify-center text-brand-accent mb-4">
                             <i data-lucide="sun" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white mb-2">UV-Block Titanium Layer</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">Multi-layer UV-shielding blocks 99.8% of harmful radiation, keeping you up to 10°F cooler on sunny days.</p>
+                        <h3 class="font-display text-lg font-bold text-slate-900 dark:text-white mb-2">UV-Block Titanium Layer</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">Multi-layer UV-shielding blocks 99.8% of harmful radiation, keeping you up to 10°F cooler on sunny days.</p>
                     </div>
                 </div>
             </div>
@@ -280,71 +295,142 @@
         <section id="catalog" class="py-20 relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                <!-- Section Title & Filter Controls -->
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
                     <div>
-                        <span class="text-brand-neon font-semibold text-xs tracking-wider uppercase">Curated Catalog</span>
-                        <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white mt-1">Our Premium Collection</h2>
+                        <span class="text-brand-vivid dark:text-brand-neon font-bold text-xs tracking-wider uppercase">Curated Catalog</span>
+                        <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-1">Our Premium Collection</h2>
                     </div>
 
-                    <!-- Filters -->
                     <div class="flex flex-wrap items-center gap-2">
-                        <button onclick="setCategory('all')" class="cat-btn active px-4 py-2 rounded-full text-xs font-semibold bg-brand-vivid text-white border border-brand-vivid transition-all" data-cat="all">
+                        <button onclick="setCategory('all')" type="button" class="cat-btn active px-4 py-2 rounded-full text-xs font-semibold bg-brand-vivid text-white border border-brand-vivid transition-all cursor-pointer" data-cat="all">
                             All Models
                         </button>
-                        <button onclick="setCategory('compact')" class="cat-btn px-4 py-2 rounded-full text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:border-slate-500 transition-all" data-cat="compact">
+                        <button onclick="setCategory('compact')" type="button" class="cat-btn px-4 py-2 rounded-full text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-slate-400 transition-all cursor-pointer" data-cat="compact">
                             Compact & Pocket
                         </button>
-                        <button onclick="setCategory('executive')" class="cat-btn px-4 py-2 rounded-full text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:border-slate-500 transition-all" data-cat="executive">
+                        <button onclick="setCategory('executive')" type="button" class="cat-btn px-4 py-2 rounded-full text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-slate-400 transition-all cursor-pointer" data-cat="executive">
                             Executive & Golf
                         </button>
-                        <button onclick="setCategory('designer')" class="cat-btn px-4 py-2 rounded-full text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:border-slate-500 transition-all" data-cat="designer">
+                        <button onclick="setCategory('designer')" type="button" class="cat-btn px-4 py-2 rounded-full text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-slate-400 transition-all cursor-pointer" data-cat="designer">
                             Designer Series
                         </button>
                     </div>
                 </div>
 
-                <!-- Product Grid -->
                 <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <!-- Products dynamically rendered by JavaScript -->
                 </div>
 
-                <!-- Empty state -->
                 <div id="noProducts" class="hidden text-center py-16">
-                    <i data-lucide="search-x" class="w-12 h-12 text-slate-600 mx-auto mb-3"></i>
-                    <h3 class="text-lg font-bold text-white">No umbrellas found</h3>
-                    <p class="text-slate-400 text-xs">Try adjusting your search query or filter settings.</p>
+                    <i data-lucide="search-x" class="w-12 h-12 text-slate-400 dark:text-slate-600 mx-auto mb-3"></i>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">No umbrellas found</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-xs">Try adjusting your search query or filter settings.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Dedicated Call To Action Section -->
+        <!-- NEW ABOUT US SECTION -->
+        <section id="about" class="py-20 bg-slate-100/60 dark:bg-slate-900/60 border-y border-slate-200 dark:border-slate-800/80 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                
+                <!-- Tagline Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-vivid/10 border border-brand-vivid/30 text-brand-vivid dark:text-brand-neon text-xs font-extrabold uppercase tracking-widest">
+                        <i data-lucide="compass" class="w-3.5 h-3.5"></i> Our Story & Purpose
+                    </div>
+                    <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                        Defy the elements in style with architectural rainwear built to withstand <span class="vivid-gradient-text">any storm.</span>
+                    </h2>
+                </div>
+
+                <!-- Our Journey Story -->
+                <div class="glass-panel bg-white/90 dark:bg-brand-card/90 border border-slate-200 dark:border-slate-800 p-8 sm:p-12 rounded-3xl shadow-xl mb-14">
+                    <div class="grid lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-5 space-y-4">
+                            <span class="text-xs font-bold text-brand-vivid dark:text-brand-neon uppercase tracking-wider">Our Journey</span>
+                            <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Born From a Soaked City Street</h3>
+                            <div class="w-12 h-1 bg-gradient-to-r from-brand-vivid to-brand-accent rounded-full"></div>
+                        </div>
+                        <div class="lg:col-span-7 space-y-4 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+                            <p>
+                                It all started on a soaked city street when yet another cheap store-bought umbrella flipped inside out during a heavy gust of wind, leaving us drenched and frustrated. We realized rainwear hadn't evolved in decades—floppy frames, single-use plastics, and disappointing design were accepted as the norm. We knew commuters deserved a far better way to navigate unpredictable weather without sacrificing their personal style or peace of mind.
+                            </p>
+                            <p>
+                                That tipping point sparked <strong class="text-slate-900 dark:text-white">The Fortes</strong>. Driven by a passion for architectural precision and modern materials, we set out to re-engineer rainwear from the ground up. By blending carbon-fiber anti-inversion ribs, nano-hydrophobic stealth fabrics, and ergonomic luxury handles, we created umbrellas engineered to perform under extreme conditions. Today, over 15,000 commuters rely on The Fortes to step into every storm with absolute confidence.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Mission Pillars -->
+                <div>
+                    <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white text-center mb-8">Our Quick Mission & Values</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        
+                        <div class="glass-panel bg-white dark:bg-slate-900/80 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-vivid transition-all group">
+                            <div class="w-10 h-10 rounded-xl bg-brand-vivid/15 border border-brand-vivid/30 text-brand-vivid dark:text-brand-neon flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <i data-lucide="shield-alert" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-display text-base font-bold text-slate-900 dark:text-white mb-2">Extreme Engineering</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Utilizing aerospace-grade carbon fiber and titanium alloys to build frames tested against 75 MPH gale-force winds.</p>
+                        </div>
+
+                        <div class="glass-panel bg-white dark:bg-slate-900/80 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-neon transition-all group">
+                            <div class="w-10 h-10 rounded-xl bg-brand-neon/15 border border-brand-neon/30 text-brand-vivid dark:text-brand-neon flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <i data-lucide="layers" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-display text-base font-bold text-slate-900 dark:text-white mb-2">Architectural Aesthetics</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Crafting minimalist, sleek, and vibrant designs that elevate your daily commute and complement your luxury style.</p>
+                        </div>
+
+                        <div class="glass-panel bg-white dark:bg-slate-900/80 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all group">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <i data-lucide="heart-handshake" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-display text-base font-bold text-slate-900 dark:text-white mb-2">Built for Life</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Providing lifetime frame guarantees to eliminate disposable umbrella waste and promote sustainable craftsmanship.</p>
+                        </div>
+
+                        <div class="glass-panel bg-white dark:bg-slate-900/80 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-accent transition-all group">
+                            <div class="w-10 h-10 rounded-xl bg-brand-accent/15 border border-brand-accent/30 text-brand-accent flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <i data-lucide="user-check" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-display text-base font-bold text-slate-900 dark:text-white mb-2">Commuter First</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Integrating hydrophobic quick-dry fabrics and effortless auto-open mechanics for frictionless daily travel.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Call To Action Section -->
         <section id="cta" class="py-16 relative overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="glass-panel p-8 md:p-12 rounded-3xl relative overflow-hidden border border-brand-vivid/40 bg-gradient-to-r from-brand-dark via-slate-900 to-brand-card shadow-2xl">
-                    <!-- Glow background accent circles -->
-                    <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-vivid/20 rounded-full blur-3xl pointer-events-none"></div>
-                    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-brand-accent/20 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="glass-panel bg-white/95 dark:bg-brand-card/95 p-8 md:p-12 rounded-3xl relative overflow-hidden border border-slate-200 dark:border-brand-vivid/40 shadow-2xl">
+                    <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-vivid/15 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-brand-accent/15 rounded-full blur-3xl pointer-events-none"></div>
                     
                     <div class="grid lg:grid-cols-12 gap-8 items-center relative z-10">
                         <div class="lg:col-span-8 space-y-4 text-center lg:text-left">
                             <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-accent/15 border border-brand-accent/40 text-brand-accent text-xs font-bold uppercase tracking-wider">
                                 <i data-lucide="zap" class="w-3.5 h-3.5 animate-bounce"></i> Limited Time Spring Offer
                             </span>
-                            <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+                            <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight">
                                 Ready to Defy the Elements <span class="vivid-gradient-text">In Style?</span>
                             </h2>
-                            <p class="text-slate-300 text-sm md:text-base max-w-2xl leading-relaxed">
-                                Join over 15,000 urban commuters who never get caught unprepared. Order today and save <strong class="text-brand-neon">20% OFF</strong> with discount code <span class="bg-slate-800 text-brand-neon font-mono font-bold px-2.5 py-1 rounded border border-slate-700 select-all">STORMPROOF</span> plus receive free express shipping & lifetime frame warranty.
+                            <p class="text-slate-600 dark:text-slate-300 text-sm md:text-base max-w-2xl leading-relaxed">
+                                Join over 15,000 urban commuters who never get caught unprepared. Order today and save <strong class="text-brand-vivid dark:text-brand-neon">20% OFF</strong> with discount code <span class="bg-slate-200 dark:bg-slate-800 text-brand-vivid dark:text-brand-neon font-mono font-bold px-2.5 py-1 rounded border border-slate-300 dark:border-slate-700 select-all">STORMPROOF</span> plus receive free express shipping & lifetime frame warranty.
                             </p>
                         </div>
                         <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-center">
-                            <a href="#catalog" class="w-full py-4 px-6 rounded-2xl vivid-btn-gradient text-white font-extrabold text-sm tracking-wide shadow-xl shadow-brand-vivid/30 flex items-center justify-center gap-2 group text-center">
+                            <a href="#catalog" class="w-full py-4 px-6 rounded-2xl vivid-btn-gradient text-white font-extrabold text-sm tracking-wide shadow-xl shadow-brand-vivid/30 flex items-center justify-center gap-2 group text-center cursor-pointer">
                                 <span>Claim 20% Off Collection</span>
                                 <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                             </a>
-                            <button onclick="toggleCart()" class="w-full py-3.5 px-6 rounded-2xl bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-xs flex items-center justify-center gap-2 transition-all">
-                                <i data-lucide="shopping-bag" class="w-4 h-4 text-brand-neon"></i>
+                            <button onclick="toggleCart()" type="button" class="w-full py-3.5 px-6 rounded-2xl bg-slate-100 dark:bg-slate-800/90 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 font-semibold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-95">
+                                <i data-lucide="shopping-bag" class="w-4 h-4 text-brand-vivid dark:text-brand-neon"></i>
                                 <span>View Your Shopping Bag</span>
                             </button>
                         </div>
@@ -353,10 +439,10 @@
             </div>
         </section>
 
-        <!-- Customer Reviews Section -->
-        <section id="reviews" class="py-16 bg-slate-900/40 border-t border-slate-800">
+        <!-- Customer Reviews Section (UPDATED WITH SPECIFIC REVIEWS) -->
+        <section id="reviews" class="py-16 bg-slate-100/70 dark:bg-slate-900/40 border-t border-slate-200 dark:border-slate-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-xl mx-auto mb-10">
+                <div class="text-center max-w-xl mx-auto mb-12">
                     <div class="flex justify-center text-amber-400 gap-1 mb-2">
                         <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
                         <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
@@ -364,55 +450,106 @@
                         <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
                         <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
                     </div>
-                    <h2 class="font-display text-2xl font-bold text-white">Loved By 15,000+ Commuters</h2>
+                    <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Loved By 15,000+ Commuters</h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Real feedback from verified Fortes umbrella owners</p>
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-6">
-                    <div class="glass-panel p-6 rounded-2xl relative">
-                        <p class="text-slate-300 text-xs italic mb-4">"Hands down the best umbrella I've owned. Survives wind gusts in downtown Chicago that destroyed three cheap umbrellas last fall."</p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center font-bold text-xs text-white">
+                    
+                    <!-- Review 1: 5 Stars -->
+                    <div class="glass-panel bg-white dark:bg-brand-card/90 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:border-brand-vivid/50 transition-all">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <div class="flex text-amber-400 gap-0.5">
+                                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                </div>
+                                <span class="text-[10px] bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold px-2 py-0.5 rounded border border-emerald-500/20">Verified Purchase</span>
+                            </div>
+                            <h4 class="font-display font-bold text-sm text-slate-900 dark:text-white mb-2">Super sturdy & arrived in bulletproof packaging!</h4>
+                            <p class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed mb-6">
+                                "Honestly blown away by the quality. I was a bit worried about ordering an umbrella online and having it arrive bent or damaged, but the packaging was insanely secure—heavy-duty box, thick protective padding, zero damage. When I opened it, you could immediately feel how solid the frame is in your hand. It handled a massive rainstorm with high winds yesterday without flinching or flipping inside out once. Best umbrella I've ever owned, 100% worth every penny."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+                            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-500 flex items-center justify-center font-bold text-xs text-white">
                                 ED
                             </div>
                             <div>
-                                <h4 class="text-xs font-bold text-white">Ethan D.</h4>
-                                <span class="text-[10px] text-slate-500">Verified Buyer • Chicago, IL</span>
+                                <h5 class="text-xs font-bold text-slate-900 dark:text-white">Ethan D.</h5>
+                                <span class="text-[10px] text-slate-500">Executive Umbrella Owner • Chicago, IL</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="glass-panel p-6 rounded-2xl relative">
-                        <p class="text-slate-300 text-xs italic mb-4">"The automatic opening mechanism feels like opening a luxury sports car door. Compact enough to permanently stay in my laptop bag."</p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-full bg-gradient-to-r from-pink-500 to-rose-500 flex items-center justify-center font-bold text-xs text-white">
+                    <!-- Review 2: 4 Stars -->
+                    <div class="glass-panel bg-white dark:bg-brand-card/90 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:border-brand-vivid/50 transition-all">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <div class="flex text-amber-400 gap-0.5">
+                                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                    <i data-lucide="star" class="w-4 h-4 text-slate-300 dark:text-slate-700"></i>
+                                </div>
+                                <span class="text-[10px] bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold px-2 py-0.5 rounded border border-amber-500/20">4 Stars</span>
+                            </div>
+                            <h4 class="font-display font-bold text-sm text-slate-900 dark:text-white mb-2">Incredible umbrella, just took a little longer to arrive.</h4>
+                            <p class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed mb-6">
+                                "The umbrella itself is easily 5 stars. The automatic opening mechanism feels super slick, and water literally just beads up and slides right off the fabric—you shake it once and it's basically dry. The only small drawback was the shipping time. It took about 5 days to get to my door, which was slightly past the estimated delivery date (probably due to the promo sale volume). If the dispatch process gets a little faster, this is a flawless 5/5 brand. Still super happy with the purchase!"
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+                            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center font-bold text-xs text-white">
                                 SL
                             </div>
                             <div>
-                                <h4 class="text-xs font-bold text-white">Sophia L.</h4>
-                                <span class="text-[10px] text-slate-500">Verified Buyer • Seattle, WA</span>
+                                <h5 class="text-xs font-bold text-slate-900 dark:text-white">Sophia L.</h5>
+                                <span class="text-[10px] text-slate-500">Auto-Open Pocket Model • Seattle, WA</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="glass-panel p-6 rounded-2xl relative">
-                        <p class="text-slate-300 text-xs italic mb-4">"Vibrant colors and true premium feel. The water repellency is magic - just shake it off once and it's dry."</p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-full bg-gradient-to-r from-teal-500 to-emerald-500 flex items-center justify-center font-bold text-xs text-white">
+                    <!-- Review 3: 5 Stars -->
+                    <div class="glass-panel bg-white dark:bg-brand-card/90 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:border-brand-vivid/50 transition-all">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <div class="flex text-amber-400 gap-0.5">
+                                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                </div>
+                                <span class="text-[10px] bg-brand-vivid/10 text-brand-vivid dark:text-brand-neon font-bold px-2 py-0.5 rounded border border-brand-vivid/20">Repeat Buyer</span>
+                            </div>
+                            <h4 class="font-display font-bold text-sm text-slate-900 dark:text-white mb-2">2nd purchase from The Fortes—blows big-name brand umbrellas out of the water.</h4>
+                            <p class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed mb-6">
+                                "This is my second umbrella from The Fortes (got the ultra-compact one last year and decided to pick up the executive model for my car). I used to buy those expensive designer umbrellas from department store brands, but they always ended up snapping at the ribs after a few heavy gusts of wind. The Fortes is on another level. The carbon fiber frame is no joke, and the matte grip feels way more luxurious. Stop wasting money on overpriced brand-name umbrellas that break in a month—just get this!"
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+                            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center font-bold text-xs text-white">
                                 MK
                             </div>
                             <div>
-                                <h4 class="text-xs font-bold text-white">Marcus K.</h4>
-                                <span class="text-[10px] text-slate-500">Verified Buyer • New York, NY</span>
+                                <h5 class="text-xs font-bold text-slate-900 dark:text-white">Marcus K.</h5>
+                                <span class="text-[10px] text-slate-500">2x Fortes Owner • New York, NY</span>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer id="footer" class="bg-slate-950 border-t border-slate-800 text-slate-400 py-12">
+    <footer id="footer" class="bg-slate-900 dark:bg-slate-950 border-t border-slate-800 text-slate-400 py-12 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                 
@@ -425,29 +562,30 @@
                         Redefining rainwear through innovative aerospace engineering, sustainable materials, and bold vibrant aesthetics.
                     </p>
                     <div class="flex gap-3 text-slate-400">
-                        <a href="#" class="p-2 rounded-full bg-slate-900 hover:text-white hover:bg-brand-vivid transition-all"><i data-lucide="instagram" class="w-4 h-4"></i></a>
-                        <a href="#" class="p-2 rounded-full bg-slate-900 hover:text-white hover:bg-brand-vivid transition-all"><i data-lucide="twitter" class="w-4 h-4"></i></a>
-                        <a href="#" class="p-2 rounded-full bg-slate-900 hover:text-white hover:bg-brand-vivid transition-all"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                        <a href="#" class="p-2 rounded-full bg-slate-800 hover:text-white hover:bg-brand-vivid transition-all cursor-pointer"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                        <a href="#" class="p-2 rounded-full bg-slate-800 hover:text-white hover:bg-brand-vivid transition-all cursor-pointer"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                        <a href="#" class="p-2 rounded-full bg-slate-800 hover:text-white hover:bg-brand-vivid transition-all cursor-pointer"><i data-lucide="facebook" class="w-4 h-4"></i></a>
                     </div>
                 </div>
 
                 <div>
                     <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Shop Collections</h4>
                     <ul class="space-y-2 text-xs">
-                        <li><a href="#catalog" onclick="setCategory('executive')" class="hover:text-brand-neon transition-colors">Executive Golf</a></li>
-                        <li><a href="#catalog" onclick="setCategory('compact')" class="hover:text-brand-neon transition-colors">Ultra Pocket Series</a></li>
-                        <li><a href="#catalog" onclick="setCategory('designer')" class="hover:text-brand-neon transition-colors">Designer Art Prints</a></li>
-                        <li><a href="#catalog" onclick="setCategory('all')" class="hover:text-brand-neon transition-colors">UV Sun Parasols</a></li>
+                        <li><a href="#catalog" onclick="setCategory('executive')" class="hover:text-brand-neon transition-colors cursor-pointer">Executive Golf</a></li>
+                        <li><a href="#catalog" onclick="setCategory('compact')" class="hover:text-brand-neon transition-colors cursor-pointer">Ultra Pocket Series</a></li>
+                        <li><a href="#catalog" onclick="setCategory('designer')" class="hover:text-brand-neon transition-colors cursor-pointer">Designer Art Prints</a></li>
+                        <li><a href="#catalog" onclick="setCategory('all')" class="hover:text-brand-neon transition-colors cursor-pointer">UV Sun Parasols</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Customer Care</h4>
                     <ul class="space-y-2 text-xs">
-                        <li><a href="#" class="hover:text-brand-neon transition-colors">Lifetime Warranty Claim</a></li>
-                        <li><a href="#" class="hover:text-brand-neon transition-colors">Shipping & Free Returns</a></li>
-                        <li><a href="#" class="hover:text-brand-neon transition-colors">Care & Maintenance Guide</a></li>
-                        <li><a href="#" class="hover:text-brand-neon transition-colors">Contact Support</a></li>
+                        <li class="text-slate-300 font-medium flex items-center gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5 text-brand-neon"></i> +62 815-1167-5290</li>
+                        <li><a href="#" class="hover:text-brand-neon transition-colors cursor-pointer">Lifetime Warranty Claim</a></li>
+                        <li><a href="#" class="hover:text-brand-neon transition-colors cursor-pointer">Shipping & Free Returns</a></li>
+                        <li><a href="#" class="hover:text-brand-neon transition-colors cursor-pointer">Care & Maintenance Guide</a></li>
+                        <li><a href="https://wa.me/6281511675290" target="_blank" class="hover:text-brand-neon transition-colors cursor-pointer">WhatsApp Support (+62 815-1167-5290)</a></li>
                     </ul>
                 </div>
 
@@ -457,73 +595,68 @@
                     <form onsubmit="handleNewsletter(event)" class="space-y-2">
                         <div class="relative">
                             <input type="email" required placeholder="Enter your email" 
-                                class="w-full bg-slate-900 border border-slate-800 rounded-lg py-2.5 px-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-brand-vivid">
+                                class="w-full bg-slate-800 border border-slate-700 rounded-lg py-2.5 px-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-brand-vivid">
                         </div>
-                        <button type="submit" class="w-full py-2.5 bg-brand-vivid hover:bg-blue-600 text-white font-semibold text-xs rounded-lg transition-all">
+                        <button type="submit" class="w-full py-2.5 bg-brand-vivid hover:bg-blue-600 text-white font-semibold text-xs rounded-lg transition-all cursor-pointer active:scale-95">
                             Join Fortes Club
                         </button>
                     </form>
                 </div>
             </div>
 
-            <div class="border-t border-slate-900 pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-4">
+            <div class="border-t border-slate-800/80 pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-4">
                 <p>&copy; 2026 The Fortes Inc. All rights reserved.</p>
                 <div class="flex gap-6">
-                    <a href="#" class="hover:text-slate-400">Privacy Policy</a>
-                    <a href="#" class="hover:text-slate-400">Terms of Service</a>
-                    <a href="#" class="hover:text-slate-400">Cookie Preferences</a>
+                    <a href="#" class="hover:text-slate-400 cursor-pointer">Privacy Policy</a>
+                    <a href="#" class="hover:text-slate-400 cursor-pointer">Terms of Service</a>
+                    <a href="#" class="hover:text-slate-400 cursor-pointer">Cookie Preferences</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Slide-over Cart Drawer -->
-    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden pointer-events-none transition-opacity duration-300 opacity-0">
-        <!-- Backdrop -->
-        <div id="cartBackdrop" onclick="toggleCart()" class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
+    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden transition-opacity duration-300 opacity-0">
+        <div id="cartBackdrop" onclick="toggleCart()" class="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-pointer"></div>
 
-        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10 pointer-events-auto">
-            <div id="cartPanel" class="w-screen max-w-md glass-panel bg-brand-card/95 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out border-l border-slate-800">
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10 pointer-events-none">
+            <div id="cartPanel" class="w-screen max-w-md glass-panel bg-white/95 dark:bg-brand-card/95 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out border-l border-slate-200 dark:border-slate-800 pointer-events-auto">
                 
-                <!-- Cart Header -->
-                <div class="p-6 border-b border-slate-800 flex items-center justify-between">
+                <div class="p-6 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
                     <div class="flex items-center gap-2">
-                        <i data-lucide="shopping-bag" class="w-5 h-5 text-brand-neon"></i>
-                        <h2 class="font-display text-lg font-bold text-white">Your Rain Gear</h2>
-                        <span id="cartCountBadge" class="bg-slate-800 text-brand-neon text-xs font-semibold px-2.5 py-0.5 rounded-full border border-slate-700">0 items</span>
+                        <i data-lucide="shopping-bag" class="w-5 h-5 text-brand-vivid dark:text-brand-neon"></i>
+                        <h2 class="font-display text-lg font-bold text-slate-900 dark:text-white">Your Rain Gear</h2>
+                        <span id="cartCountBadge" class="bg-slate-100 dark:bg-slate-800 text-brand-vivid dark:text-brand-neon text-xs font-semibold px-2.5 py-0.5 rounded-full border border-slate-200 dark:border-slate-700">0 items</span>
                     </div>
-                    <button onclick="toggleCart()" class="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors">
+                    <button onclick="toggleCart()" type="button" class="p-2 text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer">
                         <i data-lucide="x" class="w-5 h-5"></i>
                     </button>
                 </div>
 
-                <!-- Cart Items List -->
                 <div id="cartItemsList" class="flex-1 overflow-y-auto p-6 space-y-4">
-                    <!-- Dynamic Cart Items -->
                 </div>
 
-                <!-- Cart Footer / Summary -->
-                <div class="p-6 border-t border-slate-800 bg-slate-900/60 space-y-4">
+                <div class="p-6 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 space-y-4">
                     <div class="space-y-2 text-xs">
-                        <div class="flex justify-between text-slate-400">
+                        <div class="flex justify-between text-slate-500 dark:text-slate-400">
                             <span>Subtotal</span>
-                            <span id="cartSubtotal" class="text-white font-medium">$0.00</span>
+                            <span id="cartSubtotal" class="text-slate-900 dark:text-white font-medium">$0.00</span>
                         </div>
-                        <div class="flex justify-between text-slate-400">
+                        <div class="flex justify-between text-slate-500 dark:text-slate-400">
                             <span>Shipping</span>
-                            <span class="text-brand-neon font-medium">FREE</span>
+                            <span class="text-brand-vivid dark:text-brand-neon font-medium">FREE</span>
                         </div>
-                        <div class="flex justify-between text-slate-400">
+                        <div class="flex justify-between text-slate-500 dark:text-slate-400">
                             <span>Estimated Tax</span>
-                            <span id="cartTax" class="text-white font-medium">$0.00</span>
+                            <span id="cartTax" class="text-slate-900 dark:text-white font-medium">$0.00</span>
                         </div>
-                        <div class="border-t border-slate-800 pt-2 flex justify-between text-sm font-bold text-white">
+                        <div class="border-t border-slate-200 dark:border-slate-800 pt-2 flex justify-between text-sm font-bold text-slate-900 dark:text-white">
                             <span>Total</span>
-                            <span id="cartTotal" class="text-brand-neon text-base">$0.00</span>
+                            <span id="cartTotal" class="text-brand-vivid dark:text-brand-neon text-base">$0.00</span>
                         </div>
                     </div>
 
-                    <button id="checkoutBtn" onclick="openCheckout()" class="w-full py-3.5 rounded-xl vivid-btn-gradient text-white font-bold text-sm tracking-wide flex items-center justify-center gap-2 shadow-lg shadow-brand-vivid/20 disabled:opacity-50 disabled:cursor-not-allowed">
+                    <button id="checkoutBtn" onclick="openCheckout()" type="button" class="w-full py-3.5 rounded-xl vivid-btn-gradient text-white font-bold text-sm tracking-wide flex items-center justify-center gap-2 shadow-lg shadow-brand-vivid/20 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer active:scale-95">
                         <span>Proceed to Checkout</span>
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </button>
@@ -533,104 +666,141 @@
     </div>
 
     <!-- Quick View Product Modal -->
-    <div id="quickViewModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
-        <div onclick="closeQuickView()" class="absolute inset-0 bg-black/75 backdrop-blur-sm"></div>
-        <div id="quickViewContent" class="relative glass-panel bg-brand-card rounded-3xl max-w-2xl w-full p-6 sm:p-8 border border-slate-800 shadow-2xl z-10 transform scale-95 transition-transform duration-300">
-            <!-- Modal Body populated via JS -->
+    <div id="quickViewModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 opacity-0 hidden transition-opacity duration-300">
+        <div onclick="closeQuickView()" class="absolute inset-0 bg-black/75 backdrop-blur-sm cursor-pointer"></div>
+        <div id="quickViewContent" class="relative glass-panel bg-white dark:bg-brand-card rounded-3xl max-w-2xl w-full p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-2xl z-10 transform scale-95 transition-transform duration-300">
+        </div>
+    </div>
+
+    <!-- WhatsApp Order Modal -->
+    <div id="whatsappModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 opacity-0 hidden transition-opacity duration-300">
+        <div onclick="closeWhatsAppModal()" class="absolute inset-0 bg-black/75 backdrop-blur-sm cursor-pointer"></div>
+        <div class="relative glass-panel bg-white dark:bg-brand-card rounded-3xl max-w-md w-full p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-2xl z-10 space-y-5">
+            <button onclick="closeWhatsAppModal()" type="button" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 dark:hover:text-white p-2 cursor-pointer">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-500">
+                    <i data-lucide="message-circle" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h3 class="font-display text-lg font-bold text-slate-900 dark:text-white">Order via WhatsApp</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Direct Concierge: +62 815-1167-5290</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-100 dark:bg-slate-900/80 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-xs space-y-2">
+                <p class="font-bold text-slate-800 dark:text-slate-200" id="waItemName">Product Title</p>
+                <div class="p-2.5 bg-white dark:bg-slate-950 rounded-lg text-slate-600 dark:text-slate-300 font-mono text-[11px] leading-relaxed whitespace-pre-wrap select-all" id="waMessageText">
+                    Message text preview...
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-2.5">
+                <a id="waDirectBtn" href="#" target="_blank" rel="noopener noreferrer" onclick="showToast('Opening WhatsApp...')" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/30 transition-all cursor-pointer">
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                    <span>Open WhatsApp App / Web</span>
+                </a>
+                <button onclick="copyWhatsAppMessage()" type="button" class="w-full py-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold rounded-xl text-xs border border-slate-300 dark:border-slate-700 flex items-center justify-center gap-2 transition-all cursor-pointer">
+                    <i data-lucide="copy" class="w-4 h-4"></i>
+                    <span>Copy Order Details</span>
+                </button>
+            </div>
         </div>
     </div>
 
     <!-- Checkout Modal -->
-    <div id="checkoutModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
-        <div onclick="closeCheckout()" class="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
+    <div id="checkoutModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 opacity-0 hidden transition-opacity duration-300">
+        <div onclick="closeCheckout()" class="absolute inset-0 bg-black/80 backdrop-blur-md cursor-pointer"></div>
         
-        <div class="relative glass-panel bg-brand-card rounded-3xl max-w-xl w-full p-6 sm:p-8 border border-slate-800 shadow-2xl z-10 max-h-[90vh] overflow-y-auto">
-            <button onclick="closeCheckout()" class="absolute top-6 right-6 text-slate-400 hover:text-white">
+        <div class="relative glass-panel bg-white dark:bg-brand-card rounded-3xl max-w-xl w-full p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-2xl z-10 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeCheckout()" type="button" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
 
             <div id="checkoutFormStep">
                 <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 rounded-xl bg-brand-vivid/20 border border-brand-vivid/40 flex items-center justify-center text-brand-neon">
+                    <div class="w-10 h-10 rounded-xl bg-brand-vivid/20 border border-brand-vivid/40 flex items-center justify-center text-brand-vivid dark:text-brand-neon">
                         <i data-lucide="credit-card" class="w-5 h-5"></i>
                     </div>
                     <div>
-                        <h3 class="font-display text-xl font-bold text-white">Express Checkout</h3>
-                        <p class="text-xs text-slate-400">Complete your order securely</p>
+                        <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white">Express Checkout</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Complete your order securely</p>
                     </div>
                 </div>
 
                 <form onsubmit="handlePlaceOrder(event)" class="space-y-4 text-xs">
                     <div>
-                        <label class="block text-slate-300 font-medium mb-1">Full Name</label>
-                        <input type="text" required placeholder="Jane Doe" class="w-full bg-slate-900 border border-slate-800 rounded-xl py-2.5 px-3 text-white focus:outline-none focus:border-brand-vivid">
+                        <label class="block text-slate-700 dark:text-slate-300 font-medium mb-1">Full Name</label>
+                        <input type="text" required placeholder="Jane Doe" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-xl py-2.5 px-3 text-slate-900 dark:text-white focus:outline-none focus:border-brand-vivid">
                     </div>
 
                     <div class="grid grid-cols-2 gap-3">
                         <div>
-                            <label class="block text-slate-300 font-medium mb-1">Email Address</label>
-                            <input type="email" required placeholder="jane@example.com" class="w-full bg-slate-900 border border-slate-800 rounded-xl py-2.5 px-3 text-white focus:outline-none focus:border-brand-vivid">
+                            <label class="block text-slate-700 dark:text-slate-300 font-medium mb-1">Email Address</label>
+                            <input type="email" required placeholder="jane@example.com" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-xl py-2.5 px-3 text-slate-900 dark:text-white focus:outline-none focus:border-brand-vivid">
                         </div>
                         <div>
-                            <label class="block text-slate-300 font-medium mb-1">Phone</label>
-                            <input type="tel" required placeholder="+1 (555) 000-0000" class="w-full bg-slate-900 border border-slate-800 rounded-xl py-2.5 px-3 text-white focus:outline-none focus:border-brand-vivid">
+                            <label class="block text-slate-700 dark:text-slate-300 font-medium mb-1">Phone</label>
+                            <input type="tel" required placeholder="+1 (555) 000-0000" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-xl py-2.5 px-3 text-slate-900 dark:text-white focus:outline-none focus:border-brand-vivid">
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-slate-300 font-medium mb-1">Shipping Address</label>
-                        <input type="text" required placeholder="123 Stormy Way, Suite 400" class="w-full bg-slate-900 border border-slate-800 rounded-xl py-2.5 px-3 text-white focus:outline-none focus:border-brand-vivid">
+                        <label class="block text-slate-700 dark:text-slate-300 font-medium mb-1">Shipping Address</label>
+                        <input type="text" required placeholder="123 Stormy Way, Suite 400" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-xl py-2.5 px-3 text-slate-900 dark:text-white focus:outline-none focus:border-brand-vivid">
                     </div>
 
                     <div class="grid grid-cols-3 gap-3">
                         <div>
-                            <label class="block text-slate-300 font-medium mb-1">City</label>
-                            <input type="text" required placeholder="Seattle" class="w-full bg-slate-900 border border-slate-800 rounded-xl py-2.5 px-3 text-white focus:outline-none focus:border-brand-vivid">
+                            <label class="block text-slate-700 dark:text-slate-300 font-medium mb-1">City</label>
+                            <input type="text" required placeholder="Seattle" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-xl py-2.5 px-3 text-slate-900 dark:text-white focus:outline-none focus:border-brand-vivid">
                         </div>
                         <div>
-                            <label class="block text-slate-300 font-medium mb-1">State</label>
-                            <input type="text" required placeholder="WA" class="w-full bg-slate-900 border border-slate-800 rounded-xl py-2.5 px-3 text-white focus:outline-none focus:border-brand-vivid">
+                            <label class="block text-slate-700 dark:text-slate-300 font-medium mb-1">State</label>
+                            <input type="text" required placeholder="WA" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-xl py-2.5 px-3 text-slate-900 dark:text-white focus:outline-none focus:border-brand-vivid">
                         </div>
                         <div>
-                            <label class="block text-slate-300 font-medium mb-1">Zip Code</label>
-                            <input type="text" required placeholder="98101" class="w-full bg-slate-900 border border-slate-800 rounded-xl py-2.5 px-3 text-white focus:outline-none focus:border-brand-vivid">
+                            <label class="block text-slate-700 dark:text-slate-300 font-medium mb-1">Zip Code</label>
+                            <input type="text" required placeholder="98101" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-xl py-2.5 px-3 text-slate-900 dark:text-white focus:outline-none focus:border-brand-vivid">
                         </div>
                     </div>
 
                     <div class="pt-2">
-                        <label class="block text-slate-300 font-medium mb-2">Payment Method</label>
+                        <label class="block text-slate-700 dark:text-slate-300 font-medium mb-2">Payment Method</label>
                         <div class="grid grid-cols-3 gap-2">
-                            <label class="flex items-center justify-center gap-2 p-3 bg-slate-900 border border-brand-vivid rounded-xl cursor-pointer text-white">
+                            <label class="flex items-center justify-center gap-2 p-3 bg-slate-100 dark:bg-slate-900 border border-brand-vivid rounded-xl cursor-pointer text-slate-900 dark:text-white">
                                 <input type="radio" name="payment" checked class="text-brand-vivid focus:ring-0">
                                 <span class="font-bold">Card</span>
                             </label>
-                            <label class="flex items-center justify-center gap-2 p-3 bg-slate-900 border border-slate-800 rounded-xl cursor-pointer text-slate-400 hover:text-white">
+                            <label class="flex items-center justify-center gap-2 p-3 bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-xl cursor-pointer text-slate-500 dark:text-slate-400">
                                 <input type="radio" name="payment" class="text-brand-vivid focus:ring-0">
                                 <span>Apple Pay</span>
                             </label>
-                            <label class="flex items-center justify-center gap-2 p-3 bg-slate-900 border border-slate-800 rounded-xl cursor-pointer text-slate-400 hover:text-white">
+                            <label class="flex items-center justify-center gap-2 p-3 bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-xl cursor-pointer text-slate-500 dark:text-slate-400">
                                 <input type="radio" name="payment" class="text-brand-vivid focus:ring-0">
                                 <span>PayPal</span>
                             </label>
                         </div>
                     </div>
 
-                    <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 space-y-2 mt-4">
-                        <div class="flex justify-between text-slate-400">
+                    <div class="bg-slate-100 dark:bg-slate-900/80 p-4 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2 mt-4">
+                        <div class="flex justify-between text-slate-500 dark:text-slate-400">
                             <span>Items Total</span>
-                            <span id="checkoutSubtotal" class="text-white">$0.00</span>
+                            <span id="checkoutSubtotal" class="text-slate-900 dark:text-white">$0.00</span>
                         </div>
-                        <div class="flex justify-between text-slate-400">
+                        <div class="flex justify-between text-slate-500 dark:text-slate-400">
                             <span>Express Shipping</span>
-                            <span class="text-brand-neon font-bold">FREE</span>
+                            <span class="text-brand-vivid dark:text-brand-neon font-bold">FREE</span>
                         </div>
-                        <div class="flex justify-between font-bold text-sm text-white pt-2 border-t border-slate-800">
+                        <div class="flex justify-between font-bold text-sm text-slate-900 dark:text-white pt-2 border-t border-slate-200 dark:border-slate-800">
                             <span>Amount Due</span>
-                            <span id="checkoutTotal" class="text-brand-neon">$0.00</span>
+                            <span id="checkoutTotal" class="text-brand-vivid dark:text-brand-neon">$0.00</span>
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full py-4 rounded-xl vivid-btn-gradient text-white font-bold text-sm tracking-wide mt-4 shadow-lg shadow-brand-vivid/25">
+                    <button type="submit" class="w-full py-4 rounded-xl vivid-btn-gradient text-white font-bold text-sm tracking-wide mt-4 shadow-lg shadow-brand-vivid/25 cursor-pointer active:scale-95">
                         Pay Now & Confirm Order
                     </button>
                 </form>
@@ -638,17 +808,17 @@
 
             <!-- Success State -->
             <div id="checkoutSuccessStep" class="hidden text-center py-8 space-y-4">
-                <div class="w-16 h-16 bg-emerald-500/20 border border-emerald-500 text-emerald-400 rounded-full flex items-center justify-center mx-auto">
+                <div class="w-16 h-16 bg-emerald-500/20 border border-emerald-500 text-emerald-500 dark:text-emerald-400 rounded-full flex items-center justify-center mx-auto">
                     <i data-lucide="check-circle" class="w-10 h-10"></i>
                 </div>
-                <h3 class="font-display text-2xl font-extrabold text-white">Order Confirmed!</h3>
-                <p class="text-xs text-slate-300 max-w-sm mx-auto">
+                <h3 class="font-display text-2xl font-extrabold text-slate-900 dark:text-white">Order Confirmed!</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 max-w-sm mx-auto">
                     Thank you for shopping with The Fortes. We've sent a receipt and tracking updates to your email.
                 </p>
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 text-xs text-slate-400 max-w-sm mx-auto">
-                    Order ID: <span class="text-brand-neon font-mono font-bold" id="orderIdText">#FRT-89210</span>
+                <div class="bg-slate-100 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
+                    Order ID: <span class="text-brand-vivid dark:text-brand-neon font-mono font-bold" id="orderIdText">#FRT-89210</span>
                 </div>
-                <button onclick="closeCheckout()" class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-bold text-xs transition-colors">
+                <button onclick="closeCheckout()" type="button" class="px-8 py-3 bg-slate-800 text-white hover:bg-slate-700 rounded-xl font-bold text-xs transition-colors cursor-pointer">
                     Continue Shopping
                 </button>
             </div>
@@ -658,7 +828,7 @@
 
     <!-- Notification Toast -->
     <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
-        <div class="glass-panel bg-brand-card/95 border border-brand-neon/40 text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3">
+        <div class="glass-panel bg-slate-900/95 text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-brand-neon/40">
             <div class="w-8 h-8 rounded-full bg-brand-neon/20 flex items-center justify-center text-brand-neon">
                 <i data-lucide="check" class="w-4 h-4"></i>
             </div>
@@ -669,9 +839,7 @@
         </div>
     </div>
 
-    <!-- JavaScript Logic -->
     <script>
-        // Product Data
         const products = [
             {
                 id: 1,
@@ -681,7 +849,7 @@
                 rating: 4.9,
                 reviews: 128,
                 tag: "Bestseller",
-                tagColor: "bg-brand-accent",
+                tagColor: "bg-brand-accent text-white",
                 image: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80",
                 desc: "Dual-canopy stormproof design built for executive commuting. Tested in wind tunnels up to 75 MPH."
             },
@@ -693,7 +861,7 @@
                 rating: 4.8,
                 reviews: 94,
                 tag: "Ultra-Light",
-                tagColor: "bg-brand-neon text-slate-900 font-bold",
+                tagColor: "bg-brand-vivid text-white font-bold",
                 image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80",
                 desc: "Weighing just 180 grams, this compact featherlight model fits inside any pocket or mini handbag easily."
             },
@@ -705,7 +873,7 @@
                 rating: 5.0,
                 reviews: 67,
                 tag: "Night Visibility",
-                tagColor: "bg-indigo-500",
+                tagColor: "bg-indigo-600 text-white",
                 image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
                 desc: "Iridescent reflective weave canopy that glows vibrantly under headlights for maximum nighttime safety."
             },
@@ -729,7 +897,7 @@
                 rating: 4.7,
                 reviews: 43,
                 tag: "UV 50+ Shield",
-                tagColor: "bg-emerald-500",
+                tagColor: "bg-emerald-600 text-white",
                 image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80",
                 desc: "Artistic botanical floral interior print paired with maximum UV protection for scorching sunny days."
             },
@@ -741,7 +909,7 @@
                 rating: 4.8,
                 reviews: 88,
                 tag: "Auto Invert",
-                tagColor: "bg-brand-vivid",
+                tagColor: "bg-brand-vivid text-white",
                 image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80",
                 desc: "Reverse-folding technology keeps wet water trapped inside when closing, keeping cars and office floors dry."
             },
@@ -753,7 +921,7 @@
                 rating: 4.6,
                 reviews: 152,
                 tag: "Compact",
-                tagColor: "bg-slate-700",
+                tagColor: "bg-slate-700 text-white",
                 image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80",
                 desc: "One-button instant deployment. Micro-sized silhouette engineered for rapid urban transit and daily carry."
             },
@@ -765,27 +933,84 @@
                 rating: 4.9,
                 reviews: 31,
                 tag: "Heritage",
-                tagColor: "bg-amber-600",
+                tagColor: "bg-amber-700 text-white",
                 image: "https://images.unsplash.com/photo-1508873696983-2df515122519?auto=format&fit=crop&w=800&q=80",
                 desc: "Handcrafted English chestnut wooden shaft and polished brass accents for timeless sophistication."
             }
         ];
 
-        // App State
         let cart = [];
         let currentCategory = 'all';
         let searchQuery = '';
+        let activeWhatsAppMessage = '';
 
-        // Initialize icons and catalog on render
+        function safeCreateIcons() {
+            if (typeof lucide !== 'undefined' && lucide && typeof lucide.createIcons === 'function') {
+                try {
+                    lucide.createIcons();
+                } catch (e) {
+                    console.warn('Icon rendering issue:', e);
+                }
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
             renderProducts();
-            lucide.createIcons();
+            safeCreateIcons();
+            setTimeout(safeCreateIcons, 200);
+            setTimeout(safeCreateIcons, 800);
         });
 
-        // Filter & Render Products
+        function initTheme() {
+            let theme = 'dark';
+            try {
+                const saved = localStorage.getItem('fortes_theme');
+                if (saved === 'light' || saved === 'dark') {
+                    theme = saved;
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    theme = 'light';
+                }
+            } catch(e) {}
+            applyTheme(theme);
+        }
+
+        function applyTheme(theme) {
+            const isDark = (theme === 'dark');
+            const root = document.documentElement;
+            
+            if (isDark) {
+                root.classList.add('dark');
+            } else {
+                root.classList.remove('dark');
+            }
+            
+            const sunIcon = document.getElementById('themeSunIcon');
+            const moonIcon = document.getElementById('themeMoonIcon');
+            if (sunIcon && moonIcon) {
+                if (isDark) {
+                    sunIcon.classList.remove('hidden');
+                    moonIcon.classList.add('hidden');
+                } else {
+                    sunIcon.classList.add('hidden');
+                    moonIcon.classList.remove('hidden');
+                }
+            }
+        }
+
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.contains('dark');
+            const newTheme = isDark ? 'light' : 'dark';
+            try { localStorage.setItem('fortes_theme', newTheme); } catch(e) {}
+            applyTheme(newTheme);
+            showToast(`Switched to ${newTheme === 'dark' ? 'Dark' : 'Light'} Mode`);
+        }
+
         function renderProducts() {
             const grid = document.getElementById('productGrid');
             const noProducts = document.getElementById('noProducts');
+
+            if (!grid) return;
 
             const filtered = products.filter(p => {
                 const matchesCategory = currentCategory === 'all' || p.category === currentCategory;
@@ -796,19 +1021,20 @@
 
             if (filtered.length === 0) {
                 grid.innerHTML = '';
-                noProducts.classList.remove('hidden');
+                if (noProducts) noProducts.classList.remove('hidden');
                 return;
             }
 
-            noProducts.classList.add('hidden');
+            if (noProducts) noProducts.classList.add('hidden');
+
             grid.innerHTML = filtered.map(product => `
-                <div class="glass-panel rounded-2xl overflow-hidden group hover:border-brand-vivid/50 transition-all duration-300 flex flex-col">
-                    <div class="relative h-52 overflow-hidden bg-slate-900 cursor-pointer" onclick="openQuickView(${product.id})">
-                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
-                        <span class="absolute top-3 left-3 text-[10px] font-bold px-2.5 py-1 rounded-full ${product.tagColor} shadow-md">
+                <div class="glass-panel bg-white dark:bg-brand-card rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 group hover:border-brand-vivid transition-all duration-300 flex flex-col shadow-sm hover:shadow-md">
+                    <div class="relative h-52 overflow-hidden bg-slate-100 dark:bg-slate-900 cursor-pointer" onclick="openQuickView(${product.id})">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 text-[10px] font-bold px-2.5 py-1 rounded-full ${product.tagColor} shadow-md pointer-events-none">
                             ${product.tag}
                         </span>
-                        <button onclick="event.stopPropagation(); openQuickView(${product.id})" class="absolute bottom-3 right-3 bg-slate-900/80 hover:bg-brand-vivid text-white p-2 rounded-xl backdrop-blur-md transition-all opacity-0 group-hover:opacity-100 flex items-center gap-1 text-xs">
+                        <button type="button" onclick="event.stopPropagation(); openQuickView(${product.id})" class="absolute bottom-3 right-3 bg-slate-900/80 hover:bg-brand-vivid text-white p-2 rounded-xl backdrop-blur-md transition-all opacity-0 group-hover:opacity-100 flex items-center gap-1 text-xs cursor-pointer">
                             <i data-lucide="eye" class="w-4 h-4"></i>
                             <span class="text-[10px] font-semibold pr-1">Details</span>
                         </button>
@@ -817,25 +1043,25 @@
                     <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
                         <div>
                             <div class="flex justify-between items-start mb-1">
-                                <h3 onclick="openQuickView(${product.id})" class="font-display font-bold text-white text-base group-hover:text-brand-neon transition-colors cursor-pointer">${product.name}</h3>
-                                <span class="font-extrabold text-brand-neon text-sm">$${product.price.toFixed(2)}</span>
+                                <h3 onclick="openQuickView(${product.id})" class="font-display font-bold text-slate-900 dark:text-white text-base group-hover:text-brand-vivid dark:group-hover:text-brand-neon transition-colors cursor-pointer">${product.name}</h3>
+                                <span class="font-extrabold text-brand-vivid dark:text-brand-neon text-sm">$${product.price.toFixed(2)}</span>
                             </div>
-                            <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">${product.desc}</p>
+                            <p class="text-slate-600 dark:text-slate-400 text-xs line-clamp-2 leading-relaxed">${product.desc}</p>
                         </div>
 
-                        <div class="pt-2 border-t border-slate-800/80 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
-                            <div class="flex items-center gap-1 text-amber-400 text-xs">
+                        <div class="pt-2 border-t border-slate-200 dark:border-slate-800/80 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
+                            <div class="flex items-center gap-1 text-amber-500 dark:text-amber-400 text-xs">
                                 <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-                                <span class="font-bold text-white">${product.rating}</span>
+                                <span class="font-bold text-slate-900 dark:text-white">${product.rating}</span>
                                 <span class="text-slate-500 text-[10px]">(${product.reviews})</span>
                             </div>
 
                             <div class="flex items-center gap-2">
-                                <button onclick="quickAddToCart(${product.id})" class="flex-1 sm:flex-none bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white px-3 py-2 rounded-xl font-semibold text-xs transition-all flex items-center justify-center gap-1.5 active:scale-95" title="Add to Cart">
+                                <button type="button" onclick="quickAddToCart(${product.id})" class="flex-1 sm:flex-none bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-white px-3 py-2 rounded-xl font-semibold text-xs transition-all flex items-center justify-center gap-1.5 active:scale-95 cursor-pointer" title="Add to Cart">
                                     <i data-lucide="plus" class="w-3.5 h-3.5"></i>
                                     <span>Add</span>
                                 </button>
-                                <button onclick="buyNowWhatsApp(${product.id})" class="flex-1 sm:flex-none bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-2 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-md shadow-emerald-900/30 active:scale-95" title="Order via WhatsApp">
+                                <button type="button" onclick="buyNowWhatsApp(${product.id})" class="flex-1 sm:flex-none bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-2 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-md shadow-emerald-900/20 active:scale-95 cursor-pointer" title="Order via WhatsApp">
                                     <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
                                     <span>Buy Now</span>
                                 </button>
@@ -845,35 +1071,30 @@
                 </div>
             `).join('');
 
-            lucide.createIcons();
+            safeCreateIcons();
         }
 
-        // Category Filter
         function setCategory(cat) {
             currentCategory = cat;
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 if (btn.dataset.cat === cat) {
-                    btn.className = "cat-btn active px-4 py-2 rounded-full text-xs font-semibold bg-brand-vivid text-white border border-brand-vivid transition-all";
+                    btn.className = "cat-btn active px-4 py-2 rounded-full text-xs font-semibold bg-brand-vivid text-white border border-brand-vivid transition-all cursor-pointer";
                 } else {
-                    btn.className = "cat-btn px-4 py-2 rounded-full text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:border-slate-500 transition-all";
+                    btn.className = "cat-btn px-4 py-2 rounded-full text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-slate-400 transition-all cursor-pointer";
                 }
             });
             renderProducts();
         }
 
-        // Search Handlers
-        function filterProducts() {
-            searchQuery = document.getElementById('searchInput').value;
-            renderProducts();
-        }
-
         function syncAndFilter(val) {
             searchQuery = val;
-            document.getElementById('searchInput').value = val;
+            const desktop = document.getElementById('searchInput');
+            const mobile = document.getElementById('mobileSearchInput');
+            if (desktop && desktop.value !== val) desktop.value = val;
+            if (mobile && mobile.value !== val) mobile.value = val;
             renderProducts();
         }
 
-        // Quick Add To Cart
         function quickAddToCart(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
@@ -889,84 +1110,93 @@
             showToast(`Added ${product.name} to cart!`);
         }
 
-        // Cart Drawer Toggle
         function toggleCart() {
             const drawer = document.getElementById('cartDrawer');
             const panel = document.getElementById('cartPanel');
 
-            if (drawer.classList.contains('pointer-events-none')) {
-                drawer.classList.remove('pointer-events-none', 'opacity-0');
-                panel.classList.remove('translate-x-full');
+            if (!drawer || !panel) return;
+
+            if (drawer.classList.contains('hidden')) {
+                drawer.classList.remove('hidden');
+                setTimeout(() => {
+                    drawer.classList.remove('opacity-0');
+                    panel.classList.remove('translate-x-full');
+                }, 10);
             } else {
+                drawer.classList.add('opacity-0');
                 panel.classList.add('translate-x-full');
                 setTimeout(() => {
-                    drawer.classList.add('pointer-events-none', 'opacity-0');
+                    drawer.classList.add('hidden');
                 }, 300);
             }
         }
 
-        // Update Cart UI
         function updateCartUI() {
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             const badge = document.getElementById('cartBadge');
             const countBadge = document.getElementById('cartCountBadge');
             const itemsList = document.getElementById('cartItemsList');
 
-            if (totalItems > 0) {
-                badge.innerText = totalItems;
-                badge.classList.remove('hidden');
-            } else {
-                badge.classList.add('hidden');
+            if (badge) {
+                if (totalItems > 0) {
+                    badge.innerText = totalItems;
+                    badge.classList.remove('hidden');
+                } else {
+                    badge.classList.add('hidden');
+                }
             }
 
-            countBadge.innerText = `${totalItems} ${totalItems === 1 ? 'item' : 'items'}`;
+            if (countBadge) {
+                countBadge.innerText = `${totalItems} ${totalItems === 1 ? 'item' : 'items'}`;
+            }
 
-            if (cart.length === 0) {
-                itemsList.innerHTML = `
-                    <div class="text-center py-16 space-y-3">
-                        <i data-lucide="shopping-bag" class="w-12 h-12 text-slate-600 mx-auto"></i>
-                        <p class="text-slate-300 font-bold text-sm">Your cart is empty</p>
-                        <p class="text-slate-500 text-xs">Add an umbrella to shield yourself from the rain!</p>
-                    </div>
-                `;
-            } else {
-                itemsList.innerHTML = cart.map(item => `
-                    <div class="glass-panel p-3.5 rounded-xl flex items-center gap-3 border border-slate-800">
-                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 rounded-lg object-cover bg-slate-900">
-                        <div class="flex-1 min-w-0">
-                            <h4 class="font-bold text-xs text-white truncate">${item.name}</h4>
-                            <p class="text-brand-neon font-extrabold text-xs mt-0.5">$${(item.price * item.quantity).toFixed(2)}</p>
-                            <div class="flex items-center gap-2 mt-2">
-                                <button onclick="updateQty(${item.id}, -1)" class="w-5 h-5 rounded bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center text-xs">-</button>
-                                <span class="text-xs font-bold text-white px-1">${item.quantity}</span>
-                                <button onclick="updateQty(${item.id}, 1)" class="w-5 h-5 rounded bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center text-xs">+</button>
-                            </div>
+            if (itemsList) {
+                if (cart.length === 0) {
+                    itemsList.innerHTML = `
+                        <div class="text-center py-16 space-y-3">
+                            <i data-lucide="shopping-bag" class="w-12 h-12 text-slate-400 dark:text-slate-600 mx-auto"></i>
+                            <p class="text-slate-700 dark:text-slate-300 font-bold text-sm">Your cart is empty</p>
+                            <p class="text-slate-500 text-xs">Add an umbrella to shield yourself from the rain!</p>
                         </div>
-                        <button onclick="removeFromCart(${item.id})" class="p-1.5 text-slate-500 hover:text-brand-accent transition-colors">
-                            <i data-lucide="trash-2" class="w-4 h-4"></i>
-                        </button>
-                    </div>
-                `).join('');
+                    `;
+                } else {
+                    itemsList.innerHTML = cart.map(item => `
+                        <div class="glass-panel bg-white dark:bg-slate-900/60 p-3.5 rounded-xl flex items-center gap-3 border border-slate-200 dark:border-slate-800">
+                            <img src="${item.image}" alt="${item.name}" class="w-16 h-16 rounded-lg object-cover bg-slate-100 dark:bg-slate-900">
+                            <div class="flex-1 min-w-0">
+                                <h4 class="font-bold text-xs text-slate-900 dark:text-white truncate">${item.name}</h4>
+                                <p class="text-brand-vivid dark:text-brand-neon font-extrabold text-xs mt-0.5">$${(item.price * item.quantity).toFixed(2)}</p>
+                                <div class="flex items-center gap-2 mt-2">
+                                    <button type="button" onclick="updateQty(${item.id}, -1)" class="w-5 h-5 rounded bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-900 dark:text-white flex items-center justify-center text-xs cursor-pointer">-</button>
+                                    <span class="text-xs font-bold text-slate-900 dark:text-white px-1">${item.quantity}</span>
+                                    <button type="button" onclick="updateQty(${item.id}, 1)" class="w-5 h-5 rounded bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-900 dark:text-white flex items-center justify-center text-xs cursor-pointer">+</button>
+                                </div>
+                            </div>
+                            <button type="button" onclick="removeFromCart(${item.id})" class="p-1.5 text-slate-400 hover:text-brand-accent transition-colors cursor-pointer">
+                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    `).join('');
+                }
             }
 
-            // Calculations
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             const tax = subtotal * 0.08;
             const total = subtotal + tax;
 
-            document.getElementById('cartSubtotal').innerText = `$${subtotal.toFixed(2)}`;
-            document.getElementById('cartTax').innerText = `$${tax.toFixed(2)}`;
-            document.getElementById('cartTotal').innerText = `$${total.toFixed(2)}`;
+            if (document.getElementById('cartSubtotal')) document.getElementById('cartSubtotal').innerText = `$${subtotal.toFixed(2)}`;
+            if (document.getElementById('cartTax')) document.getElementById('cartTax').innerText = `$${tax.toFixed(2)}`;
+            if (document.getElementById('cartTotal')) document.getElementById('cartTotal').innerText = `$${total.toFixed(2)}`;
 
-            document.getElementById('checkoutSubtotal').innerText = `$${subtotal.toFixed(2)}`;
-            document.getElementById('checkoutTotal').innerText = `$${total.toFixed(2)}`;
+            if (document.getElementById('checkoutSubtotal')) document.getElementById('checkoutSubtotal').innerText = `$${subtotal.toFixed(2)}`;
+            if (document.getElementById('checkoutTotal')) document.getElementById('checkoutTotal').innerText = `$${total.toFixed(2)}`;
 
-            document.getElementById('checkoutBtn').disabled = cart.length === 0;
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            if (checkoutBtn) checkoutBtn.disabled = cart.length === 0;
 
-            lucide.createIcons();
+            safeCreateIcons();
         }
 
-        // Cart Actions
         function updateQty(id, change) {
             const item = cart.find(i => i.id === id);
             if (!item) return;
@@ -983,7 +1213,6 @@
             updateCartUI();
         }
 
-        // Quick View / Product Detail Modal
         function openQuickView(id) {
             const p = products.find(item => item.id === id);
             if (!p) return;
@@ -991,54 +1220,55 @@
             const modal = document.getElementById('quickViewModal');
             const content = document.getElementById('quickViewContent');
 
+            if (!modal || !content) return;
+
             content.innerHTML = `
-                <button onclick="closeQuickView()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-800 transition-colors z-20">
+                <button type="button" onclick="closeQuickView()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 dark:hover:text-white p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors z-20 cursor-pointer">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
                 <div class="grid md:grid-cols-2 gap-6 items-center">
-                    <div class="relative h-64 md:h-80 rounded-2xl overflow-hidden bg-slate-900">
+                    <div class="relative h-64 md:h-80 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900">
                         <img src="${p.image}" class="w-full h-full object-cover">
-                        <span class="absolute top-3 left-3 text-[10px] font-bold px-3 py-1 rounded-full ${p.tagColor} shadow-md">
+                        <span class="absolute top-3 left-3 text-[10px] font-bold px-3 py-1 rounded-full ${p.tagColor} shadow-md pointer-events-none">
                             ${p.tag}
                         </span>
                     </div>
                     <div class="space-y-4 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between">
-                                <span class="text-[10px] uppercase font-bold text-brand-neon tracking-widest">${p.category} series</span>
-                                <div class="flex items-center gap-1 text-amber-400 text-xs">
+                                <span class="text-[10px] uppercase font-bold text-brand-vivid dark:text-brand-neon tracking-widest">${p.category} series</span>
+                                <div class="flex items-center gap-1 text-amber-500 dark:text-amber-400 text-xs">
                                     <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-                                    <span class="font-bold text-white">${p.rating}</span>
-                                    <span class="text-slate-400 text-[10px]">(${p.reviews} reviews)</span>
+                                    <span class="font-bold text-slate-900 dark:text-white">${p.rating}</span>
+                                    <span class="text-slate-500 text-[10px]">(${p.reviews} reviews)</span>
                                 </div>
                             </div>
-                            <h3 class="font-display text-2xl font-extrabold text-white mt-1">${p.name}</h3>
+                            <h3 class="font-display text-2xl font-extrabold text-slate-900 dark:text-white mt-1">${p.name}</h3>
                             <div class="flex items-center gap-3 mt-2">
-                                <span class="text-3xl font-extrabold text-brand-neon">$${p.price.toFixed(2)}</span>
-                                <span class="text-xs text-emerald-400 font-semibold bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">In Stock</span>
+                                <span class="text-3xl font-extrabold text-brand-vivid dark:text-brand-neon">$${p.price.toFixed(2)}</span>
+                                <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">In Stock</span>
                             </div>
-                            <p class="text-slate-300 text-xs mt-3 leading-relaxed">${p.desc}</p>
+                            <p class="text-slate-600 dark:text-slate-300 text-xs mt-3 leading-relaxed">${p.desc}</p>
                             
-                            <!-- Detailed Specifications -->
-                            <div class="mt-4 grid grid-cols-2 gap-2 text-[11px] bg-slate-900/60 p-3 rounded-xl border border-slate-800">
-                                <div><span class="text-slate-500">Wind Rating:</span> <span class="text-slate-200 font-semibold">75 MPH</span></div>
-                                <div><span class="text-slate-500">Rib Material:</span> <span class="text-slate-200 font-semibold">Carbon Fiber</span></div>
-                                <div><span class="text-slate-500">Fabric:</span> <span class="text-slate-200 font-semibold">Hydrophobic</span></div>
-                                <div><span class="text-slate-500">Warranty:</span> <span class="text-slate-200 font-semibold">Lifetime Frame</span></div>
+                            <div class="mt-4 grid grid-cols-2 gap-2 text-[11px] bg-slate-100 dark:bg-slate-900/60 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <div><span class="text-slate-500">Wind Rating:</span> <span class="text-slate-800 dark:text-slate-200 font-semibold">75 MPH</span></div>
+                                <div><span class="text-slate-500">Rib Material:</span> <span class="text-slate-800 dark:text-slate-200 font-semibold">Carbon Fiber</span></div>
+                                <div><span class="text-slate-500">Fabric:</span> <span class="text-slate-800 dark:text-slate-200 font-semibold">Hydrophobic</span></div>
+                                <div><span class="text-slate-500">Warranty:</span> <span class="text-slate-800 dark:text-slate-200 font-semibold">Lifetime Frame</span></div>
                             </div>
 
-                            <div class="mt-3 space-y-1.5 text-xs text-slate-400">
+                            <div class="mt-3 space-y-1.5 text-xs text-slate-500 dark:text-slate-400">
                                 <div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-brand-vivid"></i> Lifetime Carbon Frame Guarantee</div>
                                 <div class="flex items-center gap-2"><i data-lucide="truck" class="w-4 h-4 text-brand-vivid"></i> Express 2-Day Free Shipping</div>
                             </div>
                         </div>
 
                         <div class="flex flex-col sm:flex-row gap-3 pt-2">
-                            <button onclick="quickAddToCart(${p.id}); closeQuickView();" class="flex-1 py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl text-xs border border-slate-700 flex items-center justify-center gap-2 transition-all">
+                            <button type="button" onclick="quickAddToCart(${p.id}); closeQuickView();" class="flex-1 py-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold rounded-xl text-xs border border-slate-300 dark:border-slate-700 flex items-center justify-center gap-2 transition-all cursor-pointer">
                                 <i data-lucide="shopping-bag" class="w-4 h-4"></i>
                                 <span>Add To Cart</span>
                             </button>
-                            <button onclick="buyNowWhatsApp(${p.id})" class="flex-1 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-lg shadow-emerald-900/30">
+                            <button type="button" onclick="buyNowWhatsApp(${p.id}); closeQuickView();" class="flex-1 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-lg shadow-emerald-900/20 cursor-pointer">
                                 <i data-lucide="message-circle" class="w-4 h-4"></i>
                                 <span>Buy Now via WhatsApp</span>
                             </button>
@@ -1047,51 +1277,109 @@
                 </div>
             `;
 
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            content.classList.remove('scale-95');
-            lucide.createIcons();
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+            }, 10);
+            safeCreateIcons();
         }
 
         function closeQuickView() {
             const modal = document.getElementById('quickViewModal');
             const content = document.getElementById('quickViewContent');
-            content.classList.add('scale-95');
-            modal.classList.add('opacity-0', 'pointer-events-none');
+            if (content) content.classList.add('scale-95');
+            if (modal) {
+                modal.classList.add('opacity-0');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300);
+            }
         }
 
-        // WhatsApp Direct Purchase
         function buyNowWhatsApp(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
 
-            // Updated store WhatsApp number with country code
-            const whatsappNumber = "6285297996699"; 
+            const whatsappNumber = "6281511675290"; 
             
-            const message = `Hello! I would like to buy the following umbrella:\n\n` +
-                            `☔ *Product:* ${product.name}\n` +
-                            `💰 *Price:* $${product.price.toFixed(2)}\n` +
-                            `🏷️ *Category:* ${product.category.toUpperCase()}\n\n` +
-                            `Please let me know how to proceed with payment and delivery.`;
+            const message = `Hello The Fortes! I would like to order:\n\n` +
+                            `☔ Umbrella: ${product.name}\n` +
+                            `💰 Price: $${product.price.toFixed(2)}\n` +
+                            `🏷️ Series: ${product.category.toUpperCase()}\n\n` +
+                            `Please send payment instructions & shipping options.`;
 
+            activeWhatsAppMessage = message;
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-            window.open(whatsappUrl, '_blank');
+            document.getElementById('waItemName').innerText = `${product.name} — $${product.price.toFixed(2)}`;
+            document.getElementById('waMessageText').innerText = message;
+            document.getElementById('waDirectBtn').href = whatsappUrl;
+
+            const waModal = document.getElementById('whatsappModal');
+            if (waModal) {
+                waModal.classList.remove('hidden');
+                setTimeout(() => {
+                    waModal.classList.remove('opacity-0');
+                }, 10);
+            }
+
+            try {
+                window.open(whatsappUrl, '_blank');
+            } catch(e) {}
+
+            safeCreateIcons();
         }
 
-        // Checkout Handlers
+        function closeWhatsAppModal() {
+            const waModal = document.getElementById('whatsappModal');
+            if (waModal) {
+                waModal.classList.add('opacity-0');
+                setTimeout(() => {
+                    waModal.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        function copyWhatsAppMessage() {
+            if (!activeWhatsAppMessage) return;
+
+            const textArea = document.createElement("textarea");
+            textArea.value = activeWhatsAppMessage;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast("Order message copied to clipboard!");
+            } catch (err) {
+                showToast("Select text above to copy manually.");
+            }
+            document.body.removeChild(textArea);
+        }
+
         function openCheckout() {
             if (cart.length === 0) return;
             toggleCart();
             const modal = document.getElementById('checkoutModal');
-            document.getElementById('checkoutFormStep').classList.remove('hidden');
-            document.getElementById('checkoutSuccessStep').classList.add('hidden');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
+            if (modal) {
+                document.getElementById('checkoutFormStep').classList.remove('hidden');
+                document.getElementById('checkoutSuccessStep').classList.add('hidden');
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                }, 10);
+            }
         }
 
         function closeCheckout() {
             const modal = document.getElementById('checkoutModal');
-            modal.classList.add('opacity-0', 'pointer-events-none');
+            if (modal) {
+                modal.classList.add('opacity-0');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300);
+            }
         }
 
         function handlePlaceOrder(e) {
@@ -1100,39 +1388,39 @@
             document.getElementById('checkoutSuccessStep').classList.remove('hidden');
             document.getElementById('orderIdText').innerText = `#FRT-${Math.floor(100000 + Math.random() * 900000)}`;
 
-            // Confetti Blast
-            confetti({
-                particleCount: 300,
-                spread: 70,
-                origin: { y: 0.6 }
-            });
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }
 
-            // Empty cart
             cart = [];
             updateCartUI();
         }
 
-        // Mobile Menu
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
+            if (menu) menu.classList.toggle('hidden');
         }
 
-        // Toast Notification
         function showToast(msg) {
             const toast = document.getElementById('toast');
-            document.getElementById('toastMessage').innerText = msg;
+            const msgElem = document.getElementById('toastMessage');
+            if (!toast || !msgElem) return;
+
+            msgElem.innerText = msg;
 
             toast.classList.remove('translate-y-20', 'opacity-0');
             setTimeout(() => {
                 toast.classList.add('translate-y-20', 'opacity-0');
-            }, 2500);
+            }, 2600);
         }
 
-        // Newsletter Handler
         function handleNewsletter(e) {
             e.preventDefault();
-            showToast("Subscribed! Check your email for 20% off.");
+            showToast("Subscribed! Check your inbox for 20% off.");
             e.target.reset();
         }
     </script>
