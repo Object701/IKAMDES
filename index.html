@@ -133,11 +133,15 @@
             </a>
 
             <!-- Desktop Nav Links -->
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+            <nav class="hidden md:flex items-center gap-7 text-sm font-medium">
                 <a href="#showcase" class="text-slate-600 dark:text-slate-300 hover:text-brand-vivid dark:hover:text-brand-neon transition-colors cursor-pointer">Photo Showcase</a>
                 <a href="#catalog" class="text-slate-600 dark:text-slate-300 hover:text-brand-vivid dark:hover:text-brand-neon transition-colors cursor-pointer">Product Catalog</a>
                 <a href="#warehouse" class="text-slate-600 dark:text-slate-300 hover:text-brand-vivid dark:hover:text-brand-neon transition-colors cursor-pointer">Fulfillment Hubs</a>
                 <a href="#features" class="text-slate-600 dark:text-slate-300 hover:text-brand-vivid dark:hover:text-brand-neon transition-colors cursor-pointer">Ribs Technology</a>
+                <a href="#news" class="text-slate-600 dark:text-slate-300 hover:text-brand-vivid dark:hover:text-brand-neon transition-colors cursor-pointer flex items-center gap-1">
+                    <span>News</span>
+                    <span class="bg-brand-vivid/10 text-brand-vivid dark:text-brand-neon text-[9px] font-bold px-1.5 py-0.5 rounded border border-brand-vivid/30">New</span>
+                </a>
                 <a href="#faq" class="text-slate-600 dark:text-slate-300 hover:text-brand-vivid dark:hover:text-brand-neon transition-colors cursor-pointer">FAQ</a>
             </nav>
 
@@ -179,6 +183,10 @@
             <a href="#catalog" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 dark:text-slate-200 hover:text-brand-vivid dark:hover:text-brand-neon font-medium">Product Catalog</a>
             <a href="#warehouse" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 dark:text-slate-200 hover:text-brand-vivid dark:hover:text-brand-neon font-medium">Fulfillment Hubs</a>
             <a href="#features" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 dark:text-slate-200 hover:text-brand-vivid dark:hover:text-brand-neon font-medium">Ribs Technology</a>
+            <a href="#news" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 dark:text-slate-200 hover:text-brand-vivid dark:hover:text-brand-neon font-medium flex items-center justify-between">
+                <span>Latest News</span>
+                <span class="bg-brand-vivid text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full">New</span>
+            </a>
             <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 dark:text-slate-200 hover:text-brand-vivid dark:hover:text-brand-neon font-medium">FAQ</a>
         </div>
     </header>
@@ -419,8 +427,41 @@
             </div>
         </section>
 
+        <!-- NEW: Responsive News Section -->
+        <section id="news" class="py-16 bg-slate-100/80 dark:bg-slate-900/60 border-t border-slate-200 dark:border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-vivid/10 border border-brand-vivid/30 text-brand-vivid dark:text-brand-neon text-xs font-bold uppercase tracking-wider mb-2">
+                            <i data-lucide="newspaper" class="w-3.5 h-3.5"></i>
+                            <span>Latest Updates & Press Releases</span>
+                        </div>
+                        <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                            Fortes Newsroom & Stories
+                        </h2>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-xl">
+                            Stay informed on structural rainwear innovations, upcoming product drops, logistics upgrades, and maintenance tips.
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-2 text-xs font-bold text-slate-500 dark:text-slate-400">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>Updated Weekly</span>
+                    </div>
+                </div>
+
+                <!-- News Grid: Minimum 6 Responsive News Cards -->
+                <div id="newsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                    <!-- News cards dynamically injected via JavaScript -->
+                </div>
+
+            </div>
+        </section>
+
         <!-- Interactive FAQ Section -->
-        <section id="faq" class="py-16 bg-slate-100/60 dark:bg-slate-900/40 border-t border-slate-200 dark:border-slate-800">
+        <section id="faq" class="py-16 bg-white dark:bg-brand-dark border-t border-slate-200 dark:border-slate-800">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 <!-- FAQ Header -->
@@ -568,6 +609,7 @@
                     <li><a href="#catalog" onclick="setCategoryFilter('lipat')" class="hover:text-white transition-colors">Auto Folding Umbrellas</a></li>
                     <li><a href="#catalog" onclick="setCategoryFilter('tongkat')" class="hover:text-white transition-colors">Jumbo Golf Umbrellas</a></li>
                     <li><a href="#catalog" onclick="setCategoryFilter('jas-hujan')" class="hover:text-white transition-colors">Motorcycle Raincoats</a></li>
+                    <li><a href="#news" class="hover:text-white transition-colors">Newsroom & Press Releases</a></li>
                     <li><a href="#faq" class="hover:text-white transition-colors">Frequently Asked Questions</a></li>
                 </ul>
             </div>
@@ -595,6 +637,39 @@
             © 2026 The Fortes. All Rights Reserved. Prices range from Rp 35,000 – Rp 200,000.
         </div>
     </footer>
+
+    <!-- MODAL: NEWS ARTICLE DETAILS -->
+    <div id="newsModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 transition-all duration-300 opacity-0">
+        <div id="newsModalContainer" class="bg-white dark:bg-brand-card w-full max-w-3xl rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden relative transform scale-95 transition-all duration-300 max-h-[90vh] flex flex-col">
+            
+            <button onclick="closeNewsModal()" type="button" class="absolute top-4 right-4 z-30 p-2.5 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white backdrop-blur-md border border-white/20 transition-all cursor-pointer hover:rotate-90" title="Close Modal">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="overflow-y-auto p-6 sm:p-8 space-y-6">
+                <div class="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden bg-slate-950">
+                    <img id="newsModalImage" src="" alt="News Image" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                        <span id="newsModalCategory" class="bg-brand-vivid text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">Category</span>
+                        <span id="newsModalDate" class="text-xs text-slate-300 font-mono bg-slate-900/80 px-3 py-1 rounded-full backdrop-blur-sm border border-white/10">Date</span>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 id="newsModalTitle" class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white leading-tight"></h2>
+                    <div id="newsModalBody" class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed space-y-3 border-t border-slate-200 dark:border-slate-800 pt-4"></div>
+                </div>
+
+                <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center">
+                    <span class="text-xs text-slate-400">The Fortes Official Newsroom</span>
+                    <button onclick="closeNewsModal()" class="px-5 py-2.5 rounded-xl vivid-btn-gradient text-white text-xs font-bold cursor-pointer">
+                        Back to Articles
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- MODAL: PRODUCT DETAIL PAGE (PDP) WITH TOUCH & SLIDEABLE PHOTO GALLERY -->
     <div id="pdpModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 md:p-6 transition-all duration-300 opacity-0">
@@ -971,7 +1046,7 @@
             img.src = generateUmbrellaSvgUri(fallbackTitle || "Fortes Umbrella");
         }
 
-        // REAL ACTUAL UMBRELLA & RAINWEAR PHOTO GALLERIES FROM UNSPLASH
+        // PRODUCTS DATA
         const PRODUCTS_DATA = [
             {
                 id: 1,
@@ -1201,8 +1276,67 @@
             }
         ];
 
+        // NEWS ARTICLES DATA (MINIMUM 6 CARDS)
+        const NEWS_DATA = [
+            {
+                id: 1,
+                title: "Fortes Unveils Next-Gen Carbon Fiber Rib Architecture",
+                category: "Innovation",
+                date: "October 02, 2026",
+                image: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&w=800&q=80",
+                description: "Our engineering team introduces the anti-inversion 12-rib flexible carbon fiber frame capable of withstanding typhoon-force wind gusts exceeding 80 km/h.",
+                content: "Today, Fortes officially released its revolutionary 12-rib carbon fiber framework. Designed in partnership with fluid dynamics engineers, the new frame flexes without permanent deformation during extreme gale winds. By replacing brittle steel ribs with high-tensile carbon composites, weight is reduced by 25% while durability increases threefold."
+            },
+            {
+                id: 2,
+                title: "Automated Logistics Hub Opens in West Java",
+                category: "Logistics",
+                date: "September 28, 2026",
+                image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
+                description: "New robotic fulfillment system accelerates order processing to under 2 hours for all major metropolitan deliveries across Indonesia.",
+                content: "To support burgeoning nationwide demand during monsoon seasons, Fortes has inaugurated a 5,000 m² automated fulfillment facility in West Java. Outfitted with intelligent sorting conveyor belts and real-time stock telemetry, orders placed before 3:00 PM are now dispatched on the same day with guaranteed 24-48 hour delivery to major cities."
+            },
+            {
+                id: 3,
+                title: "The Science of 210T Hydrophobic & Titanium UV Coating",
+                category: "Technology",
+                date: "September 15, 2026",
+                image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
+                description: "How our lotus-leaf nano hydrophobic surface repels water instantly while blocking 99.9% of harmful solar UV radiation.",
+                content: "Umbrellas aren't just for heavy rain anymore. Our latest whitepaper reveals how Fortes titanium inner-lining acts as a thermal barrier, dropping ambient micro-temperatures under the canopy by up to 6°C on scorching summer afternoons. Meanwhile, the outer 210T high-density pongee weave ensures rain droplets bead up and slide off effortlessly."
+            },
+            {
+                id: 4,
+                title: "Fortes Sustainability Mission: 100% Recycled EVA Raincoats",
+                category: "Sustainability",
+                date: "September 04, 2026",
+                image: "https://images.unsplash.com/photo-1511216335778-7cb8f49fa7a3?auto=format&fit=crop&w=800&q=80",
+                description: "Announcing our eco-friendly line of zero-plastic non-toxic rainwear created from upcycled ocean materials.",
+                content: "In our ongoing commitment to environmental stewardship, Fortes has launched a green manufacturing line converting recycled ocean plastics into high-grade EVA raincoats. Free from toxic PVC and odor chemicals, these durable ponchos provide 100% waterproof protection while diverting thousands of kilograms of waste from waterways."
+            },
+            {
+                id: 5,
+                title: "Preparing for Storm Season: Essential Care Guide for Rainwear",
+                category: "Tips & Guides",
+                date: "August 20, 2026",
+                image: "https://images.unsplash.com/photo-1508873696983-2df515122519?auto=format&fit=crop&w=800&q=80",
+                description: "Expert advice on drying, storing, and maintaining hydrophobic rain gear to maximize product lifespan.",
+                content: "Proper care can double the lifespan of your premium umbrella. Always shake off excess surface water and allow your umbrella to fully air-dry before folding it back into its protective sleeve. Avoid storing wet umbrellas in airtight vehicle trunks, as trapped moisture can compromise water-repellent fabric coatings over time."
+            },
+            {
+                id: 6,
+                title: "Fortes Honored with Red Dot Design Award for Reverse Auto Umbrella",
+                category: "Awards",
+                date: "August 05, 2026",
+                image: "https://images.unsplash.com/photo-1530908295418-a12e326966ba?auto=format&fit=crop&w=800&q=80",
+                description: "Our smart leakproof reverse-folding mechanism secures international recognition for product design excellence in Berlin.",
+                content: "The Fortes Reverse Inverted Automatic Umbrella has won the prestigious Red Dot Design Award in Berlin. Judges commended the innovative dry-touch folding technology that traps wet rain surfaces inside, keeping car interiors, clothing, and office flooring pristine during monsoon commutes."
+            }
+        ];
+
         let state = {
             products: [...PRODUCTS_DATA],
+            news: [...NEWS_DATA],
             activeCategory: 'all',
             searchQuery: '',
             cart: [],
@@ -1223,6 +1357,7 @@
             }).format(amount).replace('Rp', 'Rp ');
         }
 
+        // RENDER PRODUCT CATALOG GRID
         function renderProducts() {
             const grid = document.getElementById('productGrid');
             const noProducts = document.getElementById('noProductsFound');
@@ -1248,7 +1383,6 @@
                 return `
                     <div onclick="openProductDetail(${product.id})" class="glass-panel bg-white dark:bg-brand-card rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:border-brand-vivid/50 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer group">
                         <div>
-                            <!-- Card Slideable Image Carousel Container -->
                             <div class="relative h-56 w-full overflow-hidden bg-slate-950 group/cardimg" 
                                  ontouchstart="handleCardTouchStart(event, ${product.id})" 
                                  ontouchmove="handleCardTouchMove(event)" 
@@ -1262,14 +1396,12 @@
                                     `).join('')}
                                 </div>
                                 
-                                <!-- Badge Overlays -->
                                 <div class="absolute top-3 left-3 flex flex-col gap-1 z-10 pointer-events-none">
                                     <span class="bg-brand-vivid text-white text-[10px] font-extrabold px-2 py-0.5 rounded shadow">
                                         ${product.badge}
                                     </span>
                                 </div>
 
-                                <!-- Card Carousel Arrows -->
                                 ${product.gallery.length > 1 ? `
                                     <button onclick="event.stopPropagation(); slideCardGallery(${product.id}, -1)" type="button" class="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white backdrop-blur-sm border border-white/20 opacity-0 group-hover/cardimg:opacity-100 transition-opacity cursor-pointer z-10" title="Previous Image">
                                         <i data-lucide="chevron-left" class="w-4 h-4"></i>
@@ -1279,7 +1411,6 @@
                                     </button>
                                 ` : ''}
 
-                                <!-- Slide Dots Indicator -->
                                 <div class="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10 bg-slate-900/60 px-2 py-1 rounded-full backdrop-blur-sm border border-white/10">
                                     ${product.gallery.map((_, dotIdx) => `
                                         <span class="w-1.5 h-1.5 rounded-full transition-all ${dotIdx === currentIndex ? 'bg-brand-neon w-3' : 'bg-white/50'}"></span>
@@ -1287,7 +1418,6 @@
                                 </div>
                             </div>
 
-                            <!-- Card Info -->
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between text-[11px] text-slate-400">
                                     <span>${product.categoryLabel}</span>
@@ -1308,7 +1438,6 @@
                             </div>
                         </div>
 
-                        <!-- Card Footer -->
                         <div class="p-4 pt-0 border-t border-slate-100 dark:border-slate-800/80 mt-2 flex items-center justify-between">
                             <div>
                                 <span class="text-[10px] text-slate-400 line-through block">${formatCurrency(product.originalPrice)}</span>
@@ -1326,6 +1455,115 @@
             lucide.createIcons();
         }
 
+        // RENDER NEWS SECTION (MINIMUM 6 CARDS REQUIRED WITH: IMAGE, CATEGORY, DATE, TITLE, DESCRIPTION, READ MORE BUTTON)
+        function renderNews() {
+            const newsGrid = document.getElementById('newsGrid');
+            if (!newsGrid) return;
+
+            newsGrid.innerHTML = state.news.map(article => `
+                <article class="glass-panel bg-white dark:bg-brand-card rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-md hover:shadow-xl hover:border-brand-vivid/50 transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <!-- Article Image -->
+                        <div class="relative h-48 w-full overflow-hidden bg-slate-950">
+                            <img src="${article.image}" alt="${article.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="handleImageError(this, '${article.title}')">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+                            
+                            <!-- Article Category Badge -->
+                            <div class="absolute top-3 left-3">
+                                <span class="bg-brand-vivid text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md shadow tracking-wider">
+                                    ${article.category}
+                                </span>
+                            </div>
+
+                            <!-- Article Date Badge -->
+                            <div class="absolute bottom-3 right-3">
+                                <span class="text-[10px] font-mono text-slate-200 bg-slate-900/80 px-2.5 py-1 rounded-full backdrop-blur-sm border border-white/10 flex items-center gap-1">
+                                    <i data-lucide="calendar" class="w-3 h-3 text-brand-neon"></i>
+                                    <span>${article.date}</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Article Content Details -->
+                        <div class="p-5 space-y-2">
+                            <!-- Title -->
+                            <h3 class="font-display font-bold text-base text-slate-900 dark:text-white group-hover:text-brand-vivid dark:group-hover:text-brand-neon transition-colors line-clamp-2">
+                                ${article.title}
+                            </h3>
+
+                            <!-- Description -->
+                            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3">
+                                ${article.description}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Article Card Action: Read More Button -->
+                    <div class="p-5 pt-0 mt-2 border-t border-slate-100 dark:border-slate-800/80 pt-3">
+                        <button onclick="openNewsModal(${article.id})" type="button" class="w-full py-2.5 px-4 rounded-xl bg-slate-100 dark:bg-slate-800/90 hover:bg-brand-vivid hover:text-white dark:hover:bg-brand-vivid text-slate-800 dark:text-slate-200 text-xs font-bold transition-all flex items-center justify-between group/btn cursor-pointer">
+                            <span>Read Full Article</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform"></i>
+                        </button>
+                    </div>
+                </article>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        // NEWS MODAL FUNCTIONS
+        function openNewsModal(articleId) {
+            const article = state.news.find(a => a.id === articleId);
+            if (!article) return;
+
+            document.getElementById('newsModalImage').src = article.image;
+            document.getElementById('newsModalCategory').innerText = article.category;
+            document.getElementById('newsModalDate').innerText = article.date;
+            document.getElementById('newsModalTitle').innerText = article.title;
+            document.getElementById('newsModalBody').innerHTML = `<p>${article.content}</p><p class="pt-2 text-slate-500 italic">For media inquiries or wholesale distribution partnerships regarding ${article.category.toLowerCase()} topics, reach out to press@thefortes.com.</p>`;
+
+            const modal = document.getElementById('newsModal');
+            const container = document.getElementById('newsModalContainer');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                container.classList.remove('scale-95');
+                container.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeNewsModal() {
+            const modal = document.getElementById('newsModal');
+            const container = document.getElementById('newsModalContainer');
+            container.classList.remove('scale-100');
+            container.classList.add('scale-95');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // CATEGORY & SEARCH FILTERS
+        function setCategoryFilter(category) {
+            state.activeCategory = category;
+            document.querySelectorAll('.cat-pill').forEach(btn => {
+                btn.classList.remove('bg-brand-vivid', 'text-white');
+                btn.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+            });
+            const activeBtn = document.getElementById(`cat-${category}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-brand-vivid', 'text-white');
+                activeBtn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+            }
+            renderProducts();
+        }
+
+        function filterProducts(query) {
+            state.searchQuery = query;
+            renderProducts();
+        }
+
+        // CARD GALLERY NAVIGATION & TOUCH
         function slideCardGallery(productId, direction) {
             const product = state.products.find(p => p.id === productId);
             if (!product) return;
@@ -1362,6 +1600,7 @@
             }
         }
 
+        // HERO SHOWCASE SLIDER
         function initHeroSlider() {
             const track = document.getElementById('heroSliderTrack');
             const dots = document.getElementById('heroSliderDots');
@@ -1449,63 +1688,63 @@
             }, 5000);
         }
 
-        function setCategoryFilter(category) {
-            state.activeCategory = category;
-            document.querySelectorAll('.cat-pill').forEach(btn => {
-                btn.classList.remove('bg-brand-vivid', 'text-white');
-                btn.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
-            });
-            const activeBtn = document.getElementById(`cat-${category}`);
-            if (activeBtn) {
-                activeBtn.classList.add('bg-brand-vivid', 'text-white');
-                activeBtn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
-            }
-            renderProducts();
-        }
-
-        function filterProducts(query) {
-            state.searchQuery = query;
-            renderProducts();
-        }
-
+        // PRODUCT DETAIL PAGE (PDP) MODAL & GALLERY
         function openProductDetail(productId) {
             const product = state.products.find(p => p.id === productId);
             if (!product) return;
 
             state.activePdpProduct = product;
             state.activePdpImageIndex = 0;
-            state.activePdpVariant = product.variants[0];
+            state.activePdpVariant = product.variants[0] ? product.variants[0].name : 'Default';
             state.pdpQty = 1;
 
             document.getElementById('pdpTitle').innerText = product.title;
             document.getElementById('pdpCategoryBadge').innerText = product.categoryLabel;
             document.getElementById('pdpDiscountBadge').innerText = `SAVE ${product.discountPercent}%`;
-            document.getElementById('pdpPrice').innerText = formatCurrency(product.price);
-            document.getElementById('pdpOriginalPrice').innerText = formatCurrency(product.originalPrice);
             document.getElementById('pdpRatingText').innerText = product.rating;
             document.getElementById('pdpReviewCount').innerText = `(${product.reviewsCount} Verified Reviews)`;
-            document.getElementById('pdpDescriptionText').innerText = product.description;
-            document.getElementById('pdpQtyDisplay').innerText = state.pdpQty;
+            document.getElementById('pdpPrice').innerText = formatCurrency(product.price);
+            document.getElementById('pdpOriginalPrice').innerText = formatCurrency(product.originalPrice);
 
+            document.getElementById('pdpStockJkt').innerText = `${product.warehouseStock.jakarta} units`;
+            document.getElementById('pdpStockSby').innerText = `${product.warehouseStock.surabaya} units`;
+            document.getElementById('pdpStockBdg').innerText = `${product.warehouseStock.bandung} units`;
+            
+            document.getElementById('pdpDescriptionText').innerText = product.description;
             document.getElementById('pdpSpecFabric').innerText = product.specifications.fabric;
             document.getElementById('pdpSpecFrame').innerText = product.specifications.frame;
             document.getElementById('pdpSpecSize').innerText = product.specifications.size;
             document.getElementById('pdpSpecWeight').innerText = product.specifications.weight;
 
-            document.getElementById('pdpStockJkt').innerText = `${product.warehouseStock.jakarta} units`;
-            document.getElementById('pdpStockSby').innerText = `${product.warehouseStock.surabaya} units`;
-            document.getElementById('pdpStockBdg').innerText = `${product.warehouseStock.bandung} units`;
+            document.getElementById('pdpQtyDisplay').innerText = state.pdpQty;
 
+            // Render Variant Buttons
             const variantContainer = document.getElementById('pdpVariantContainer');
-            variantContainer.innerHTML = product.variants.map((v, idx) => `
-                <button onclick="selectPdpVariant(${idx})" type="button" class="variant-btn px-3 py-1.5 rounded-xl text-xs font-bold border flex items-center gap-2 cursor-pointer transition-all ${idx === 0 ? 'border-brand-vivid bg-brand-vivid/10 text-brand-vivid dark:text-brand-neon' : 'border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300'}" id="variantBtn-${idx}">
-                    <span class="w-3.5 h-3.5 rounded-full border border-black/20" style="background-color: ${v.hex}"></span>
+            variantContainer.innerHTML = product.variants.map((v, i) => `
+                <button onclick="selectPdpVariant('${v.name}')" type="button" class="pdp-var-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all flex items-center gap-2 cursor-pointer ${i === 0 ? 'bg-brand-vivid text-white border-brand-vivid shadow' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700'}">
+                    <span class="w-3 h-3 rounded-full border border-white/40" style="background-color: ${v.hex}"></span>
                     <span>${v.name}</span>
                 </button>
             `).join('');
 
-            renderPdpGallery();
-            setupPdpTouchSwipe();
+            // Render Gallery Track
+            const galleryTrack = document.getElementById('pdpGalleryTrack');
+            galleryTrack.innerHTML = product.gallery.map((img, i) => `
+                <div class="slide-item h-full">
+                    <img src="${img}" alt="${product.title} view ${i+1}" class="w-full h-full object-cover" onerror="handleImageError(this, '${product.title}')">
+                </div>
+            `).join('');
+
+            // Render Thumbnail Strip
+            const thumbContainer = document.getElementById('pdpThumbnailContainer');
+            thumbContainer.innerHTML = product.gallery.map((img, i) => `
+                <button onclick="setPdpImageIndex(${i})" type="button" class="pdp-thumb-btn flex-shrink-0 w-16 h-16 rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${i === 0 ? 'border-brand-neon scale-105 shadow-md' : 'border-slate-200 dark:border-slate-800 opacity-60 hover:opacity-100'}">
+                    <img src="${img}" alt="Thumbnail ${i+1}" class="w-full h-full object-cover" onerror="handleImageError(this, 'Thumb')">
+                </button>
+            `).join('');
+
+            document.getElementById('pdpGalleryTotal').innerText = product.gallery.length;
+            updatePdpGalleryUI();
 
             const modal = document.getElementById('pdpModal');
             const container = document.getElementById('pdpModalContainer');
@@ -1513,14 +1752,14 @@
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
                 container.classList.remove('scale-95');
+                container.classList.add('scale-100');
             }, 10);
-
-            lucide.createIcons();
         }
 
         function closeProductDetail() {
             const modal = document.getElementById('pdpModal');
             const container = document.getElementById('pdpModalContainer');
+            container.classList.remove('scale-100');
             container.classList.add('scale-95');
             modal.classList.add('opacity-0');
             setTimeout(() => {
@@ -1528,89 +1767,43 @@
             }, 300);
         }
 
-        function renderPdpGallery() {
-            const product = state.activePdpProduct;
-            if (!product) return;
-
-            const track = document.getElementById('pdpGalleryTrack');
-            track.innerHTML = product.gallery.map((imgUrl, idx) => `
-                <div class="slide-item h-full flex items-center justify-center bg-slate-950">
-                    <img src="${imgUrl}" alt="Photo ${idx+1}" class="w-full h-full object-cover" onerror="handleImageError(this, '${product.title}')">
-                </div>
-            `).join('');
-
-            track.style.transform = `translateX(-${state.activePdpImageIndex * 100}%)`;
-
-            document.getElementById('pdpGalleryIndex').innerText = state.activePdpImageIndex + 1;
-            document.getElementById('pdpGalleryTotal').innerText = product.gallery.length;
-
-            const thumbContainer = document.getElementById('pdpThumbnailContainer');
-            thumbContainer.innerHTML = product.gallery.map((imgUrl, idx) => `
-                <button onclick="setPdpGalleryIndex(${idx})" type="button" class="relative w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 border-2 transition-all cursor-pointer ${idx === state.activePdpImageIndex ? 'border-brand-vivid scale-95 shadow-md ring-2 ring-brand-vivid/50' : 'border-transparent opacity-60 hover:opacity-100'}">
-                    <img src="${imgUrl}" alt="Thumbnail ${idx+1}" class="w-full h-full object-cover" onerror="handleImageError(this, '${product.title}')">
-                </button>
-            `).join('');
-        }
-
         function slidePdpGallery(direction) {
-            const product = state.activePdpProduct;
-            if (!product) return;
-            const total = product.gallery.length;
-            state.activePdpImageIndex = (state.activePdpImageIndex + direction + total) % total;
-            renderPdpGallery();
-            if (!document.getElementById('lightboxModal').classList.contains('hidden')) {
-                updateLightboxImage();
-            }
-        }
-
-        function setPdpGalleryIndex(index) {
-            state.activePdpImageIndex = index;
-            renderPdpGallery();
-        }
-
-        function setupPdpTouchSwipe() {
-            const viewport = document.getElementById('pdpGalleryViewport');
-            if (!viewport) return;
-
-            viewport.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            }, {passive: true});
-
-            viewport.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                if (touchStartX - touchEndX > 30) slidePdpGallery(1);
-                if (touchEndX - touchStartX > 30) slidePdpGallery(-1);
-            }, {passive: true});
-        }
-
-        function openFullscreenLightbox() {
             if (!state.activePdpProduct) return;
-            const lightbox = document.getElementById('lightboxModal');
-            lightbox.classList.remove('hidden');
-            updateLightboxImage();
+            const total = state.activePdpProduct.gallery.length;
+            state.activePdpImageIndex = (state.activePdpImageIndex + direction + total) % total;
+            updatePdpGalleryUI();
         }
 
-        function closeFullscreenLightbox() {
-            document.getElementById('lightboxModal').classList.add('hidden');
+        function setPdpImageIndex(index) {
+            state.activePdpImageIndex = index;
+            updatePdpGalleryUI();
         }
 
-        function updateLightboxImage() {
-            const product = state.activePdpProduct;
-            if (!product) return;
-            document.getElementById('lightboxImage').src = product.gallery[state.activePdpImageIndex];
-            document.getElementById('lightboxCaption').innerText = `${product.title} — Photo ${state.activePdpImageIndex + 1} of ${product.gallery.length}`;
-        }
+        function updatePdpGalleryUI() {
+            const track = document.getElementById('pdpGalleryTrack');
+            if (track) {
+                track.style.transform = `translateX(-${state.activePdpImageIndex * 100}%)`;
+            }
+            document.getElementById('pdpGalleryIndex').innerText = state.activePdpImageIndex + 1;
 
-        function selectPdpVariant(index) {
-            const product = state.activePdpProduct;
-            if (!product) return;
-            state.activePdpVariant = product.variants[index];
-
-            document.querySelectorAll('.variant-btn').forEach((btn, idx) => {
-                if (idx === index) {
-                    btn.className = "variant-btn px-3 py-1.5 rounded-xl text-xs font-bold border flex items-center gap-2 cursor-pointer transition-all border-brand-vivid bg-brand-vivid/10 text-brand-vivid dark:text-brand-neon";
+            const thumbs = document.querySelectorAll('.pdp-thumb-btn');
+            thumbs.forEach((btn, idx) => {
+                if (idx === state.activePdpImageIndex) {
+                    btn.className = "pdp-thumb-btn flex-shrink-0 w-16 h-16 rounded-xl overflow-hidden border-2 border-brand-neon scale-105 shadow-md transition-all cursor-pointer";
                 } else {
-                    btn.className = "variant-btn px-3 py-1.5 rounded-xl text-xs font-bold border flex items-center gap-2 cursor-pointer transition-all border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300";
+                    btn.className = "pdp-thumb-btn flex-shrink-0 w-16 h-16 rounded-xl overflow-hidden border-2 border-slate-200 dark:border-slate-800 opacity-60 hover:opacity-100 transition-all cursor-pointer";
+                }
+            });
+        }
+
+        function selectPdpVariant(variantName) {
+            state.activePdpVariant = variantName;
+            const buttons = document.querySelectorAll('.pdp-var-btn');
+            buttons.forEach(btn => {
+                if (btn.innerText.includes(variantName)) {
+                    btn.className = "pdp-var-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all flex items-center gap-2 cursor-pointer bg-brand-vivid text-white border-brand-vivid shadow";
+                } else {
+                    btn.className = "pdp-var-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all flex items-center gap-2 cursor-pointer bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700";
                 }
             });
         }
@@ -1639,131 +1832,152 @@
             }
         }
 
-        function addToCart(product, variant, qty) {
-            const variantName = variant ? variant.name : product.variants[0].name;
-            const existingIndex = state.cart.findIndex(item => item.id === product.id && item.variant === variantName);
+        // FULLSCREEN LIGHTBOX
+        function openFullscreenLightbox() {
+            if (!state.activePdpProduct) return;
+            const currentImg = state.activePdpProduct.gallery[state.activePdpImageIndex];
+            const lightbox = document.getElementById('lightboxModal');
+            document.getElementById('lightboxImage').src = currentImg;
+            document.getElementById('lightboxCaption').innerText = `${state.activePdpProduct.title} (${state.activePdpImageIndex + 1}/${state.activePdpProduct.gallery.length})`;
+            lightbox.classList.remove('hidden');
+        }
 
-            if (existingIndex > -1) {
-                state.cart[existingIndex].qty += qty;
+        function closeFullscreenLightbox() {
+            document.getElementById('lightboxModal').classList.add('hidden');
+        }
+
+        // SHOPPING CART & CHECKOUT
+        function quickAddToCart(productId) {
+            const product = state.products.find(p => p.id === productId);
+            if (!product) return;
+            
+            const existing = state.cart.find(item => item.id === productId && item.variant === product.variants[0].name);
+            if (existing) {
+                existing.qty += 1;
             } else {
                 state.cart.push({
                     id: product.id,
                     title: product.title,
                     price: product.price,
                     image: product.gallery[0],
-                    variant: variantName,
-                    qty: qty
+                    variant: product.variants[0] ? product.variants[0].name : 'Default',
+                    qty: 1
                 });
             }
-
-            updateCartUI();
-            showToast("Added to Cart", `${product.title} (${variantName}) x${qty}`);
-        }
-
-        function quickAddToCart(productId) {
-            const product = state.products.find(p => p.id === productId);
-            if (!product) return;
-            addToCart(product, product.variants[0], 1);
+            updateCartBadge();
+            renderCartItems();
+            showToast("Added to Cart!", `${product.title} is ready in your cart.`);
         }
 
         function addCurrentPdpToCart() {
             if (!state.activePdpProduct) return;
-            addToCart(state.activePdpProduct, state.activePdpVariant, state.pdpQty);
+            const p = state.activePdpProduct;
+
+            const existing = state.cart.find(item => item.id === p.id && item.variant === state.activePdpVariant);
+            if (existing) {
+                existing.qty += state.pdpQty;
+            } else {
+                state.cart.push({
+                    id: p.id,
+                    title: p.title,
+                    price: p.price,
+                    image: p.gallery[0],
+                    variant: state.activePdpVariant,
+                    qty: state.pdpQty
+                });
+            }
+            updateCartBadge();
+            renderCartItems();
             closeProductDetail();
+            showToast("Added to Cart!", `${p.title} (${state.activePdpVariant}) x${state.pdpQty} added.`);
         }
 
         function buyNowCurrentPdp() {
-            if (!state.activePdpProduct) return;
-            addToCart(state.activePdpProduct, state.activePdpVariant, state.pdpQty);
-            closeProductDetail();
-            toggleCartDrawer(true);
+            addCurrentPdpToCart();
+            openCheckoutModal();
         }
 
-        function toggleCartDrawer(forceOpen = false) {
-            const drawer = document.getElementById('cartDrawer');
-            if (forceOpen || drawer.classList.contains('hidden')) {
-                drawer.classList.remove('hidden');
-            } else {
-                drawer.classList.add('hidden');
-            }
-        }
-
-        function updateCartQty(index, delta) {
-            if (state.cart[index]) {
-                state.cart[index].qty += delta;
-                if (state.cart[index].qty <= 0) {
-                    state.cart.splice(index, 1);
-                }
-            }
-            updateCartUI();
-        }
-
-        function removeFromCart(index) {
-            state.cart.splice(index, 1);
-            updateCartUI();
-        }
-
-        function updateCartUI() {
+        function updateCartBadge() {
             const badge = document.getElementById('cartBadge');
-            const totalItems = state.cart.reduce((sum, i) => sum + i.qty, 0);
-
+            const totalItems = state.cart.reduce((sum, item) => sum + item.qty, 0);
             if (totalItems > 0) {
                 badge.innerText = totalItems;
                 badge.classList.remove('hidden');
             } else {
                 badge.classList.add('hidden');
             }
+        }
 
+        function renderCartItems() {
             const list = document.getElementById('cartItemsList');
-            let totalCost = 0;
-
             if (state.cart.length === 0) {
                 list.innerHTML = `
-                    <div class="text-center py-12 text-slate-400 space-y-2">
-                        <i data-lucide="shopping-bag" class="w-10 h-10 mx-auto text-slate-500 opacity-50"></i>
-                        <p class="text-xs font-bold">Your cart is currently empty</p>
-                        <p class="text-[11px] text-slate-500">Explore our windproof collection and add items.</p>
+                    <div class="text-center py-12 space-y-3">
+                        <i data-lucide="shopping-bag" class="w-12 h-12 text-slate-300 dark:text-slate-600 mx-auto"></i>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Your shopping cart is empty.</p>
                     </div>
                 `;
             } else {
-                list.innerHTML = state.cart.map((item, idx) => {
-                    const itemTotal = item.price * item.qty;
-                    totalCost += itemTotal;
-                    return `
-                        <div class="p-3 bg-slate-50 dark:bg-slate-900/80 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center gap-3">
-                            <img src="${item.image}" alt="${item.title}" class="w-14 h-14 rounded-xl object-cover border border-slate-200 dark:border-slate-700" onerror="handleImageError(this, '${item.title}')">
-                            <div class="flex-grow min-w-0">
-                                <h4 class="text-xs font-bold text-slate-900 dark:text-white truncate">${item.title}</h4>
-                                <span class="text-[10px] text-slate-400 block">Color: ${item.variant}</span>
+                list.innerHTML = state.cart.map((item, index) => `
+                    <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
+                        <div class="flex items-center gap-3">
+                            <img src="${item.image}" alt="${item.title}" class="w-14 h-14 object-cover rounded-xl border border-slate-200 dark:border-slate-700" onerror="handleImageError(this, '${item.title}')">
+                            <div>
+                                <h4 class="font-bold text-xs text-slate-900 dark:text-white line-clamp-1">${item.title}</h4>
+                                <span class="text-[10px] text-slate-400 block">Variant: ${item.variant}</span>
                                 <span class="text-xs font-mono font-bold text-brand-accent dark:text-brand-neon">${formatCurrency(item.price)}</span>
                             </div>
-                            <div class="flex flex-col items-end gap-1.5">
-                                <button onclick="removeFromCart(${idx})" type="button" class="text-slate-400 hover:text-rose-500 text-[10px]" title="Remove">
-                                    <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
-                                </button>
-                                <div class="flex items-center border border-slate-300 dark:border-slate-700 rounded-lg bg-slate-100 dark:bg-slate-800 overflow-hidden">
-                                    <button onclick="updateCartQty(${idx}, -1)" type="button" class="px-2 py-0.5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 font-bold">-</button>
-                                    <span class="px-2 py-0.5 font-mono text-xs text-slate-900 dark:text-white">${item.qty}</span>
-                                    <button onclick="updateCartQty(${idx}, 1)" type="button" class="px-2 py-0.5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 font-bold">+</button>
-                                </div>
-                            </div>
                         </div>
-                    `;
-                }).join('');
+
+                        <div class="flex items-center gap-2">
+                            <div class="flex items-center border border-slate-300 dark:border-slate-700 rounded-lg overflow-hidden bg-white dark:bg-slate-800">
+                                <button onclick="updateCartItemQty(${index}, -1)" class="px-2 py-1 text-slate-600 dark:text-slate-300 hover:bg-slate-100 font-bold text-xs cursor-pointer">-</button>
+                                <span class="px-2 text-xs font-mono font-bold text-slate-900 dark:text-white">${item.qty}</span>
+                                <button onclick="updateCartItemQty(${index}, 1)" class="px-2 py-1 text-slate-600 dark:text-slate-300 hover:bg-slate-100 font-bold text-xs cursor-pointer">+</button>
+                            </div>
+                            <button onclick="removeCartItem(${index})" class="p-1.5 text-slate-400 hover:text-brand-accent cursor-pointer">
+                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
             }
 
-            document.getElementById('cartSubtotalText').innerText = formatCurrency(totalCost);
-            document.getElementById('cartTotalText').innerText = formatCurrency(totalCost);
-            document.getElementById('checkoutTotalAmount').innerText = formatCurrency(totalCost);
+            const totalAmount = state.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            document.getElementById('cartSubtotalText').innerText = formatCurrency(totalAmount);
+            document.getElementById('cartTotalText').innerText = formatCurrency(totalAmount);
+            document.getElementById('checkoutTotalAmount').innerText = formatCurrency(totalAmount);
+
             lucide.createIcons();
+        }
+
+        function updateCartItemQty(index, delta) {
+            state.cart[index].qty += delta;
+            if (state.cart[index].qty <= 0) {
+                state.cart.splice(index, 1);
+            }
+            updateCartBadge();
+            renderCartItems();
+        }
+
+        function removeCartItem(index) {
+            state.cart.splice(index, 1);
+            updateCartBadge();
+            renderCartItems();
+        }
+
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cartDrawer');
+            drawer.classList.toggle('hidden');
+            renderCartItems();
         }
 
         function openCheckoutModal() {
             if (state.cart.length === 0) {
-                showToast("Cart Empty", "Please add products before checking out.");
+                showToast("Cart Empty", "Please add items to your cart before proceeding.");
                 return;
             }
-            toggleCartDrawer(false);
+            toggleCartDrawer();
             document.getElementById('checkoutModal').classList.remove('hidden');
         }
 
@@ -1774,87 +1988,91 @@
         function processOrder(e) {
             e.preventDefault();
             closeCheckoutModal();
+            state.cart = [];
+            updateCartBadge();
             confetti({
                 particleCount: 100,
                 spread: 70,
                 origin: { y: 0.6 }
             });
-            showToast("Order Placed!", "Thank you for your purchase. Tracking sent via WhatsApp.");
-            state.cart = [];
-            updateCartUI();
+            showToast("Order Confirmed!", "Thank you for choosing The Fortes. Your rainwear is being prepared!");
         }
 
-        function showToast(title, message) {
-            const toast = document.getElementById('toastNotification');
-            document.getElementById('toastTitle').innerText = title;
-            document.getElementById('toastMessage').innerText = message;
+        // FAQ ACCORDION
+        function toggleFaq(index) {
+            const answer = document.getElementById(`faq-answer-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            const iconWrapper = document.getElementById(`faq-icon-wrapper-${index}`);
             
-            toast.classList.remove('translate-y-20', 'opacity-0');
-            toast.classList.add('translate-y-0', 'opacity-100');
+            const isOpen = !answer.classList.contains('max-h-0');
 
-            setTimeout(() => {
-                toast.classList.remove('translate-y-0', 'opacity-100');
-                toast.classList.add('translate-y-20', 'opacity-0');
-            }, 3000);
+            // Close all
+            for (let i = 0; i < 6; i++) {
+                const a = document.getElementById(`faq-answer-${i}`);
+                const ic = document.getElementById(`faq-icon-${i}`);
+                const wr = document.getElementById(`faq-icon-wrapper-${i}`);
+                if (a) {
+                    a.classList.add('max-h-0', 'opacity-0');
+                    if (ic) ic.style.transform = 'rotate(0deg)';
+                    if (wr) wr.classList.remove('bg-brand-vivid', 'text-white');
+                }
+            }
+
+            if (!isOpen) {
+                answer.classList.remove('max-h-0', 'opacity-0');
+                answer.classList.add('max-h-96', 'opacity-100');
+                icon.style.transform = 'rotate(45deg)';
+                iconWrapper.classList.add('bg-brand-vivid', 'text-white');
+            }
         }
 
+        // THEME TOGGLE
         function toggleTheme() {
             const html = document.documentElement;
             if (html.classList.contains('dark')) {
                 html.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
             } else {
                 html.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
             }
         }
 
+        // MOBILE MENU TOGGLE
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('hidden');
         }
 
-        /* FAQ Accordion Toggle Function */
-        function toggleFaq(index) {
-            const answer = document.getElementById(`faq-answer-${index}`);
-            const icon = document.getElementById(`faq-icon-${index}`);
-            const btn = answer?.previousElementSibling;
-            
-            if (!answer || !icon) return;
+        // TOAST NOTIFICATIONS
+        function showToast(title, message) {
+            const toast = document.getElementById('toastNotification');
+            document.getElementById('toastTitle').innerText = title;
+            document.getElementById('toastMessage').innerText = message;
 
-            const isCurrentlyClosed = answer.classList.contains('max-h-0');
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            toast.classList.add('translate-y-0', 'opacity-100');
 
-            // Accordion behavior: Close all open FAQ answers first
-            document.querySelectorAll('[id^="faq-answer-"]').forEach((el, idx) => {
-                el.classList.add('max-h-0', 'opacity-0');
-                el.classList.remove('max-h-96', 'opacity-100');
-                const ic = document.getElementById(`faq-icon-${idx}`);
-                if (ic) {
-                    ic.setAttribute('data-lucide', 'plus');
-                    ic.classList.remove('rotate-180');
-                }
-                const b = el.previousElementSibling;
-                if (b) b.setAttribute('aria-expanded', 'false');
-            });
-
-            // If it was closed, open it now
-            if (isCurrentlyClosed) {
-                answer.classList.remove('max-h-0', 'opacity-0');
-                answer.classList.add('max-h-96', 'opacity-100');
-                icon.setAttribute('data-lucide', 'minus');
-                icon.classList.add('rotate-180');
-                if (btn) btn.setAttribute('aria-expanded', 'true');
-            }
-            
-            lucide.createIcons();
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3500);
         }
 
-        // Initialize on DOM load
+        // INITIALIZATION
         document.addEventListener('DOMContentLoaded', () => {
             renderProducts();
+            renderNews();
             initHeroSlider();
-            updateCartUI();
             lucide.createIcons();
+
+            // Close PDP Modal on Esc key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeProductDetail();
+                    closeNewsModal();
+                    closeFullscreenLightbox();
+                    closeCheckoutModal();
+                }
+            });
         });
     </script>
 </body>
