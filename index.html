@@ -108,17 +108,17 @@
 
 <body class="bg-slate-50 dark:bg-brand-dark text-slate-800 dark:text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-accent selection:text-white">
 
-    <!-- Top Announcement Bar (Smaller Text & Padding) -->
+    <!-- Top Announcement Bar -->
     <div class="bg-gradient-to-r from-brand-vivid via-indigo-600 to-brand-accent text-white text-[11px] sm:text-xs py-1.5 px-3 text-center font-medium tracking-tight sm:tracking-wide flex items-center justify-center gap-1.5 relative z-30 shadow-md">
         <i data-lucide="zap" class="w-3 h-3 animate-bounce flex-shrink-0"></i>
         <span class="truncate">RAIN PROMO: Up to 40% OFF & Free Shipping! Code: <span class="underline underline-offset-2 font-mono font-bold">ANTIAGIN</span></span>
         <i data-lucide="umbrella" class="w-3 h-3 hidden sm:inline-block flex-shrink-0"></i>
     </div>
 
-    <!-- Header Navigation (Smaller Brand Logo & Scaled Heights) -->
+    <!-- Header Navigation -->
     <header class="sticky top-0 z-40 bg-white/90 dark:bg-brand-dark/85 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-2">
-            <!-- Brand Logo (Compact font size & icon) -->
+            <!-- Brand Logo -->
             <a href="#" class="flex items-center gap-2 group cursor-pointer flex-shrink-0">
                 <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-tr from-brand-vivid to-brand-accent p-0.5 shadow-md shadow-brand-vivid/20 group-hover:scale-105 transition-transform">
                     <div class="w-full h-full bg-slate-900 dark:bg-brand-dark rounded-[6px] flex items-center justify-center">
@@ -1064,16 +1064,42 @@
 
     <!-- CHECKOUT MODAL -->
     <div id="checkoutModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
-        <div class="bg-white dark:bg-brand-card w-full max-w-md rounded-3xl border border-slate-200 dark:border-slate-800 p-5 shadow-2xl space-y-4 relative max-h-[90vh] overflow-y-auto">
-            <button onclick="closeCheckoutModal()" type="button" class="absolute top-4 right-4 p-1.5 rounded-full text-slate-400 hover:text-white cursor-pointer">
+        <div class="bg-white dark:bg-brand-card w-full max-w-lg rounded-3xl border border-slate-200 dark:border-slate-800 p-5 shadow-2xl space-y-4 relative max-h-[92vh] overflow-y-auto">
+            <button onclick="closeCheckoutModal()" type="button" class="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-white cursor-pointer">
                 <i data-lucide="x" class="w-4 h-4"></i>
             </button>
 
             <div class="space-y-0.5">
                 <h3 class="font-display text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-1.5">
-                    <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i> Express Checkout
+                    <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i> Express Checkout & Order Summary
                 </h3>
-                <p class="text-[11px] text-slate-500 dark:text-slate-400">Provide shipping details to complete order</p>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">Review total price per item, apply coupon code, and provide shipping details</p>
+            </div>
+
+            <!-- Checkout Products Summary List -->
+            <div class="space-y-2">
+                <span class="text-[10px] uppercase tracking-wider font-bold text-slate-400 block">Products in Order</span>
+                <div id="checkoutItemsList" class="max-h-36 overflow-y-auto space-y-1.5 pr-1">
+                    <!-- Injected via JS -->
+                </div>
+            </div>
+
+            <!-- Coupon Code Section -->
+            <div class="p-3 bg-slate-100 dark:bg-slate-900/80 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2">
+                <div class="flex items-center justify-between text-xs font-bold text-slate-800 dark:text-slate-200">
+                    <span class="flex items-center gap-1.5">
+                        <i data-lucide="tag" class="w-3.5 h-3.5 text-brand-vivid dark:text-brand-neon"></i>
+                        <span>Apply Coupon Code</span>
+                    </span>
+                    <span id="couponStatusBadge" class="hidden text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-500 border border-emerald-500/30">Applied</span>
+                </div>
+                <div class="flex gap-2">
+                    <input type="text" id="couponInput" placeholder="Try ANTIAGIN or FORTES10" class="flex-grow bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-mono uppercase text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-brand-vivid">
+                    <button onclick="applyCoupon()" type="button" class="px-4 py-2 rounded-xl bg-brand-vivid hover:bg-brand-vivid/90 text-white font-bold text-xs cursor-pointer shadow">
+                        Apply
+                    </button>
+                </div>
+                <p id="couponFeedback" class="text-[10px] text-slate-500">Tip: Use code <strong class="font-mono text-brand-vivid dark:text-brand-neon">ANTIAGIN</strong> for 10% discount!</p>
             </div>
 
             <form onsubmit="processOrder(event)" class="space-y-3 text-xs">
@@ -1101,9 +1127,19 @@
                     <textarea required rows="2" placeholder="Street name, suite, city, postal code" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-brand-vivid"></textarea>
                 </div>
 
-                <div class="p-2.5 bg-slate-100 dark:bg-slate-900 rounded-xl flex justify-between items-center text-xs font-bold">
-                    <span class="text-slate-600 dark:text-slate-400">Total Payment:</span>
-                    <span id="checkoutTotalAmount" class="text-sm text-brand-accent dark:text-brand-neon font-mono">Rp 0</span>
+                <div class="p-3 bg-slate-100 dark:bg-slate-900 rounded-xl space-y-1 text-xs">
+                    <div class="flex justify-between text-slate-500">
+                        <span>Subtotal:</span>
+                        <span id="checkoutSubtotalAmount" class="font-mono">Rp 0</span>
+                    </div>
+                    <div id="checkoutDiscountRow" class="hidden flex justify-between text-emerald-500">
+                        <span id="checkoutDiscountLabel">Discount (Coupon):</span>
+                        <span id="checkoutDiscountAmount" class="font-mono">-Rp 0</span>
+                    </div>
+                    <div class="flex justify-between items-center font-bold pt-1 border-t border-slate-200 dark:border-slate-800">
+                        <span class="text-slate-700 dark:text-slate-300">Total Payment:</span>
+                        <span id="checkoutTotalAmount" class="text-sm text-brand-accent dark:text-brand-neon font-mono">Rp 0</span>
+                    </div>
                 </div>
 
                 <button type="submit" class="w-full py-3 rounded-xl vivid-btn-gradient text-white font-extrabold text-xs tracking-wide shadow-lg shadow-brand-vivid/20 flex items-center justify-center gap-1.5 cursor-pointer">
@@ -1308,6 +1344,7 @@
         let pdpCurrentSlideIndex = 0;
         let pdpCurrentQty = 1;
         let isAdminLoggedIn = false;
+        let appliedCoupon = null; // { code: 'ANTIAGIN', discountPercent: 10 }
 
         // LOCAL STORAGE LOAD/SAVE
         function initApp() {
@@ -1834,7 +1871,8 @@
                 `;
             } else {
                 cart.forEach((item, index) => {
-                    subtotal += item.price * item.qty;
+                    const itemTotal = item.price * item.qty;
+                    subtotal += itemTotal;
                     const itemImg = item.gallery && item.gallery[0] ? item.gallery[0] : generateUmbrellaSvgUri(item.title);
 
                     const div = document.createElement('div');
@@ -1843,14 +1881,17 @@
                         <img src="${itemImg}" alt="${item.title}" class="w-12 h-12 rounded-lg object-cover bg-slate-950" onerror="handleImageError(this, '${item.title}')">
                         <div class="flex-grow min-w-0">
                             <h4 class="font-bold text-xs text-slate-900 dark:text-white truncate">${item.title}</h4>
-                            <p class="text-[11px] font-mono text-brand-vivid dark:text-brand-neon">Rp ${item.price.toLocaleString()}</p>
+                            <div class="flex items-center gap-2 text-[11px] mt-0.5">
+                                <span class="font-mono text-slate-500">Rp ${item.price.toLocaleString()} × ${item.qty}</span>
+                                <span class="font-mono font-bold text-brand-vivid dark:text-brand-neon">= Rp ${itemTotal.toLocaleString()}</span>
+                            </div>
                             <div class="flex items-center gap-2 mt-1">
-                                <button onclick="changeCartQty(${index}, -1)" class="w-5 h-5 rounded bg-slate-200 dark:bg-slate-800 flex items-center justify-center font-bold text-xs">-</button>
+                                <button onclick="changeCartQty(${index}, -1)" class="w-5 h-5 rounded bg-slate-200 dark:bg-slate-800 flex items-center justify-center font-bold text-xs cursor-pointer">-</button>
                                 <span class="font-mono text-xs font-bold">${item.qty}</span>
-                                <button onclick="changeCartQty(${index}, 1)" class="w-5 h-5 rounded bg-slate-200 dark:bg-slate-800 flex items-center justify-center font-bold text-xs">+</button>
+                                <button onclick="changeCartQty(${index}, 1)" class="w-5 h-5 rounded bg-slate-200 dark:bg-slate-800 flex items-center justify-center font-bold text-xs cursor-pointer">+</button>
                             </div>
                         </div>
-                        <button onclick="removeCartItem(${index})" class="p-1 text-slate-400 hover:text-brand-accent">
+                        <button onclick="removeCartItem(${index})" class="p-1 text-slate-400 hover:text-brand-accent cursor-pointer">
                             <i data-lucide="trash-2" class="w-4 h-4"></i>
                         </button>
                     `;
@@ -1880,6 +1921,97 @@
             updateCartCount();
         }
 
+        // COUPON & CHECKOUT CALCULATIONS
+        function applyCoupon() {
+            const codeInput = document.getElementById('couponInput');
+            const feedback = document.getElementById('couponFeedback');
+            const statusBadge = document.getElementById('couponStatusBadge');
+            const code = codeInput.value.trim().toUpperCase();
+
+            if (!code) {
+                appliedCoupon = null;
+                feedback.textContent = "Please enter a valid coupon code.";
+                feedback.className = "text-[10px] text-brand-accent";
+                statusBadge.classList.add('hidden');
+                updateCheckoutTotals();
+                return;
+            }
+
+            if (code === 'ANTIAGIN') {
+                appliedCoupon = { code: 'ANTIAGIN', discountPercent: 10 };
+                feedback.textContent = "Coupon ANTIAGIN applied! 10% OFF discount activated.";
+                feedback.className = "text-[10px] text-emerald-500 font-bold";
+                statusBadge.textContent = "10% OFF Active";
+                statusBadge.classList.remove('hidden');
+                showToast("Coupon Applied", "10% OFF discount applied to your order.");
+            } else if (code === 'FORTES20') {
+                appliedCoupon = { code: 'FORTES20', discountPercent: 20 };
+                feedback.textContent = "Coupon FORTES20 applied! 20% OFF discount activated.";
+                feedback.className = "text-[10px] text-emerald-500 font-bold";
+                statusBadge.textContent = "20% OFF Active";
+                statusBadge.classList.remove('hidden');
+                showToast("Coupon Applied", "20% OFF discount applied to your order.");
+            } else {
+                appliedCoupon = null;
+                feedback.textContent = "Invalid coupon code. Try 'ANTIAGIN'.";
+                feedback.className = "text-[10px] text-brand-accent font-bold";
+                statusBadge.classList.add('hidden');
+                showToast("Invalid Coupon", "The coupon code entered is not valid.");
+            }
+
+            updateCheckoutTotals();
+        }
+
+        function updateCheckoutTotals() {
+            const checkoutList = document.getElementById('checkoutItemsList');
+            const subtotalAmountEl = document.getElementById('checkoutSubtotalAmount');
+            const discountRow = document.getElementById('checkoutDiscountRow');
+            const discountAmountEl = document.getElementById('checkoutDiscountAmount');
+            const totalAmountEl = document.getElementById('checkoutTotalAmount');
+
+            if (!checkoutList) return;
+
+            checkoutList.innerHTML = '';
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.qty;
+                subtotal += itemTotal;
+                const itemImg = item.gallery && item.gallery[0] ? item.gallery[0] : generateUmbrellaSvgUri(item.title);
+
+                const div = document.createElement('div');
+                div.className = 'flex items-center justify-between p-2 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs';
+                div.innerHTML = `
+                    <div class="flex items-center gap-2 min-w-0">
+                        <img src="${itemImg}" class="w-8 h-8 rounded object-cover bg-slate-950 flex-shrink-0" onerror="handleImageError(this, '${item.title}')">
+                        <div class="min-w-0">
+                            <p class="font-bold text-slate-900 dark:text-white truncate">${item.title}</p>
+                            <p class="text-[10px] text-slate-500 font-mono">Rp ${item.price.toLocaleString()} × ${item.qty}</p>
+                        </div>
+                    </div>
+                    <div class="text-right flex-shrink-0 font-mono font-bold text-brand-vivid dark:text-brand-neon">
+                        Rp ${itemTotal.toLocaleString()}
+                    </div>
+                `;
+                checkoutList.appendChild(div);
+            });
+
+            let discount = 0;
+            if (appliedCoupon) {
+                discount = Math.round(subtotal * (appliedCoupon.discountPercent / 100));
+                discountRow.classList.remove('hidden');
+                document.getElementById('checkoutDiscountLabel').textContent = `Discount (${appliedCoupon.code} - ${appliedCoupon.discountPercent}%):`;
+                discountAmountEl.textContent = `-Rp ${discount.toLocaleString()}`;
+            } else {
+                discountRow.classList.add('hidden');
+            }
+
+            const finalTotal = Math.max(0, subtotal - discount);
+
+            if (subtotalAmountEl) subtotalAmountEl.textContent = `Rp ${subtotal.toLocaleString()}`;
+            if (totalAmountEl) totalAmountEl.textContent = `Rp ${finalTotal.toLocaleString()}`;
+        }
+
         // CHECKOUT & ORDERS
         function openCheckoutModal() {
             if (cart.length === 0) {
@@ -1887,8 +2019,15 @@
                 return;
             }
             toggleCartDrawer();
-            const total = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
-            document.getElementById('checkoutTotalAmount').textContent = `Rp ${total.toLocaleString()}`;
+            
+            // Reset coupon input state
+            document.getElementById('couponInput').value = '';
+            document.getElementById('couponFeedback').textContent = "Tip: Use code ANTIAGIN for 10% discount!";
+            document.getElementById('couponFeedback').className = "text-[10px] text-slate-500";
+            document.getElementById('couponStatusBadge').classList.add('hidden');
+            appliedCoupon = null;
+
+            updateCheckoutTotals();
             document.getElementById('checkoutModal').classList.remove('hidden');
         }
 
@@ -1996,8 +2135,8 @@
                     <td class="p-3 font-mono font-bold text-emerald-500">Rp ${p.price.toLocaleString()}</td>
                     <td class="p-3 font-mono font-bold">${p.stock || 0} units</td>
                     <td class="p-3 text-right space-x-1">
-                        <button onclick="editProduct(${p.id})" class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200"><i data-lucide="edit-2" class="w-3.5 h-3.5"></i></button>
-                        <button onclick="deleteProduct(${p.id})" class="p-1.5 rounded-lg bg-red-500/10 text-red-500 hover:bg-red-500/20"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i></button>
+                        <button onclick="editProduct(${p.id})" class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 cursor-pointer"><i data-lucide="edit-2" class="w-3.5 h-3.5"></i></button>
+                        <button onclick="deleteProduct(${p.id})" class="p-1.5 rounded-lg bg-red-500/10 text-red-500 hover:bg-red-500/25 cursor-pointer"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i></button>
                     </td>
                 `;
                 tbody.appendChild(tr);
