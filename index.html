@@ -6,7 +6,7 @@
     <title>The Fortes — Rainwear & Umbrella Collection</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230A0F1D'/><path d='M16 6a10 10 0 0 0-10 10h20a10 10 0 0 0-10-10z' fill='%2300F0FF'/><path d='M16 16v9a2 2 0 0 0 4 0' stroke='%23FF3366' stroke-width='2' fill='none' stroke-linecap='round'/></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230A0F1D'/><path d='M16 6a10 10 0 0 0-10 10h20a10 10 0 0-10-10z' fill='%2300F0FF'/><path d='M16 16v9a2 2 0 0 0 4 0' stroke='%23FF3366' stroke-width='2' fill='none' stroke-linecap='round'/></svg>">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -152,6 +152,27 @@
                     <i data-lucide="search" class="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 absolute left-2.5 top-2"></i>
                 </div>
 
+                <!-- Customer User Auth Bar (Guest state) -->
+                <div id="userGuestNav" class="flex items-center gap-1.5">
+                    <button onclick="openLoginModal()" type="button" class="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-white border border-slate-300 dark:border-slate-700 text-xs font-bold transition-all cursor-pointer">
+                        Log In
+                    </button>
+                    <button onclick="openRegisterModal()" type="button" class="hidden sm:inline-flex px-3 py-1.5 rounded-full vivid-btn-gradient text-white text-xs font-bold transition-all cursor-pointer shadow-sm">
+                        Register
+                    </button>
+                </div>
+
+                <!-- Customer User Auth Bar (Logged-in state) -->
+                <div id="userLoggedInNav" class="hidden flex items-center gap-2">
+                    <div class="flex items-center gap-1.5 bg-brand-vivid/10 border border-brand-vivid/30 rounded-full px-3 py-1">
+                        <i data-lucide="user" class="w-3.5 h-3.5 text-brand-vivid dark:text-brand-neon"></i>
+                        <span id="navCustomerName" class="text-xs font-bold text-slate-900 dark:text-white truncate max-w-[100px] sm:max-w-[140px]">Hi, Customer!</span>
+                    </div>
+                    <button onclick="handleUserLogout()" type="button" class="p-1.5 rounded-full bg-slate-100 dark:bg-slate-800/80 hover:bg-red-500/10 hover:text-red-500 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-700/60 transition-all cursor-pointer" title="Log Out">
+                        <i data-lucide="log-out" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
                 <!-- Admin Action Button -->
                 <button onclick="handleAdminBtnClick()" type="button" id="adminHeaderBtn" class="px-2.5 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-white border border-slate-300 dark:border-slate-700 text-xs font-bold flex items-center gap-1 transition-all cursor-pointer" title="Admin Portal">
                     <i data-lucide="shield" class="w-3.5 h-3.5 text-brand-vivid dark:text-brand-neon"></i>
@@ -193,7 +214,10 @@
                 <span class="bg-brand-vivid text-white text-[8px] font-extrabold px-1.5 py-0.5 rounded-full">New</span>
             </a>
             <a href="#faq" onclick="toggleMobileMenu()" class="block py-1.5 text-slate-700 dark:text-slate-200 hover:text-brand-vivid dark:hover:text-brand-neon font-medium">FAQ</a>
-            <button onclick="handleAdminBtnClick(); toggleMobileMenu();" class="w-full text-left py-1.5 text-brand-vivid dark:text-brand-neon font-bold flex items-center gap-1.5">
+            <div id="mobileUserAuthNav" class="pt-2 border-t border-slate-200 dark:border-slate-800 space-y-2">
+                <!-- Mobile auth controls injected via JavaScript -->
+            </div>
+            <button onclick="handleAdminBtnClick(); toggleMobileMenu();" class="w-full text-left py-1.5 text-brand-vivid dark:text-brand-neon font-bold flex items-center gap-1.5 border-t border-slate-200 dark:border-slate-800 pt-2">
                 <i data-lucide="shield" class="w-3.5 h-3.5"></i>
                 <span id="mobileAdminBtnLabel">Admin Portal</span>
             </button>
@@ -588,6 +612,100 @@
             © 2026 The Fortes. All Rights Reserved. Prices range from Rp 35,000 – Rp 200,000.
         </div>
     </footer>
+
+    <!-- MODAL: CUSTOMER REGISTRATION -->
+    <div id="registerModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-brand-card w-full max-w-sm rounded-3xl border border-slate-200 dark:border-slate-800 p-6 shadow-2xl space-y-4 relative">
+            <button onclick="closeRegisterModal()" type="button" class="absolute top-4 right-4 p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white cursor-pointer transition-colors">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+
+            <div class="text-center space-y-1">
+                <div class="w-10 h-10 rounded-xl bg-brand-vivid/10 text-brand-vivid dark:text-brand-neon flex items-center justify-center mx-auto">
+                    <i data-lucide="user-plus" class="w-5 h-5"></i>
+                </div>
+                <h3 class="font-display text-xl font-extrabold text-slate-900 dark:text-white">Create Account</h3>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">Join Fortes for faster checkout & tracking</p>
+            </div>
+
+            <form onsubmit="handleCustomerRegister(event)" class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Full Name</label>
+                    <input type="text" id="regFullName" required placeholder="e.g. Alex Johnson" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-brand-vivid">
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Email Address</label>
+                    <input type="email" id="regEmail" required placeholder="name@example.com" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-brand-vivid">
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Password</label>
+                    <input type="password" id="regPassword" required placeholder="Minimum 6 characters" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-brand-vivid">
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Confirm Password</label>
+                    <input type="password" id="regConfirmPassword" required placeholder="Repeat password" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-brand-vivid">
+                </div>
+
+                <div id="registerError" class="hidden text-brand-accent text-xs font-bold text-center">
+                    Validation error message
+                </div>
+
+                <button type="submit" class="w-full py-3 rounded-xl vivid-btn-gradient text-white font-extrabold text-xs tracking-wide shadow-lg shadow-brand-vivid/20 flex items-center justify-center gap-1.5 cursor-pointer">
+                    <i data-lucide="user-check" class="w-4 h-4"></i>
+                    <span>Register Account</span>
+                </button>
+
+                <p class="text-center text-[11px] text-slate-500 pt-1">
+                    Already have an account? <button type="button" onclick="switchToLoginModal()" class="text-brand-vivid dark:text-brand-neon font-bold hover:underline">Log in</button>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: CUSTOMER LOGIN -->
+    <div id="loginModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-brand-card w-full max-w-sm rounded-3xl border border-slate-200 dark:border-slate-800 p-6 shadow-2xl space-y-4 relative">
+            <button onclick="closeLoginModal()" type="button" class="absolute top-4 right-4 p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white cursor-pointer transition-colors">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+
+            <div class="text-center space-y-1">
+                <div class="w-10 h-10 rounded-xl bg-brand-vivid/10 text-brand-vivid dark:text-brand-neon flex items-center justify-center mx-auto">
+                    <i data-lucide="log-in" class="w-5 h-5"></i>
+                </div>
+                <h3 class="font-display text-xl font-extrabold text-slate-900 dark:text-white">Welcome Back</h3>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">Log in to your Fortes customer account</p>
+            </div>
+
+            <form onsubmit="handleCustomerLogin(event)" class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Email Address</label>
+                    <input type="email" id="loginEmail" required placeholder="name@example.com" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-brand-vivid">
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Password</label>
+                    <input type="password" id="loginPassword" required placeholder="Enter password" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-brand-vivid">
+                </div>
+
+                <div id="loginError" class="hidden text-brand-accent text-xs font-bold text-center">
+                    Invalid email or password!
+                </div>
+
+                <button type="submit" class="w-full py-3 rounded-xl vivid-btn-gradient text-white font-extrabold text-xs tracking-wide shadow-lg shadow-brand-vivid/20 flex items-center justify-center gap-1.5 cursor-pointer">
+                    <i data-lucide="log-in" class="w-4 h-4"></i>
+                    <span>Log In</span>
+                </button>
+
+                <p class="text-center text-[11px] text-slate-500 pt-1">
+                    Don't have an account? <button type="button" onclick="switchToRegisterModal()" class="text-brand-vivid dark:text-brand-neon font-bold hover:underline">Register now</button>
+                </p>
+            </form>
+        </div>
+    </div>
 
     <!-- MODAL: ADMIN LOGIN -->
     <div id="adminLoginModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
@@ -1110,7 +1228,7 @@
             <form onsubmit="processOrder(event)" class="space-y-3 text-xs">
                 <div>
                     <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Full Name</label>
-                    <input type="text" required placeholder="e.g. Alex Johnson" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-brand-vivid">
+                    <input type="text" id="checkoutFullName" required placeholder="e.g. Alex Johnson" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-brand-vivid">
                 </div>
 
                 <div>
@@ -1349,10 +1467,13 @@
         let pdpCurrentSlideIndex = 0;
         let pdpCurrentQty = 1;
         let isAdminLoggedIn = false;
+        let currentUser = null; // Currently logged-in customer object
+        let registeredUsers = []; // Registered customers list
         let appliedCoupon = null; // { code: 'ANTIAGIN', discountPercent: 10 }
 
-        // LOCAL STORAGE LOAD/SAVE
+        // LOCAL STORAGE LOAD/SAVE & AUTH INITIALIZATION
         function initApp() {
+            // Load Products
             const savedProducts = localStorage.getItem('fortes_products');
             if (savedProducts) {
                 try {
@@ -1365,17 +1486,31 @@
                 saveProductsToStorage();
             }
 
+            // Load Cart
             const savedCart = localStorage.getItem('fortes_cart');
             if (savedCart) {
                 try { cart = JSON.parse(savedCart); } catch (e) { cart = []; }
             }
 
+            // Load Registered Users & Current Customer Session
+            const savedUsers = localStorage.getItem('fortes_registered_users');
+            if (savedUsers) {
+                try { registeredUsers = JSON.parse(savedUsers); } catch (e) { registeredUsers = []; }
+            }
+
+            const savedCurrentUser = localStorage.getItem('fortes_current_user');
+            if (savedCurrentUser) {
+                try { currentUser = JSON.parse(savedCurrentUser); } catch (e) { currentUser = null; }
+            }
+
+            // Load Admin Session
             const adminState = localStorage.getItem('fortes_admin_logged');
             if (adminState === 'true') {
                 isAdminLoggedIn = true;
                 updateAdminUiState();
             }
 
+            renderUserAuthState();
             renderHeroSlider();
             renderProducts();
             renderNewsArticles();
@@ -1391,6 +1526,8 @@
                     closeProductFormModal();
                     closeCheckoutModal();
                     closeFullscreenLightbox();
+                    closeLoginModal();
+                    closeRegisterModal();
                 }
             });
 
@@ -1406,6 +1543,189 @@
 
         function saveCartToStorage() {
             localStorage.setItem('fortes_cart', JSON.stringify(cart));
+        }
+
+        function saveUsersToStorage() {
+            localStorage.setItem('fortes_registered_users', JSON.stringify(registeredUsers));
+        }
+
+        function saveCurrentUserSession(user) {
+            currentUser = user;
+            if (user) {
+                localStorage.setItem('fortes_current_user', JSON.stringify(user));
+            } else {
+                localStorage.removeItem('fortes_current_user');
+            }
+            renderUserAuthState();
+        }
+
+        // CUSTOMER USER AUTHENTICATION UI & LOGIC
+        function renderUserAuthState() {
+            const guestNav = document.getElementById('userGuestNav');
+            const loggedNav = document.getElementById('userLoggedInNav');
+            const navName = document.getElementById('navCustomerName');
+            const mobileAuthNav = document.getElementById('mobileUserAuthNav');
+            const checkoutFullName = document.getElementById('checkoutFullName');
+
+            if (currentUser) {
+                if (guestNav) guestNav.classList.add('hidden');
+                if (loggedNav) loggedNav.classList.remove('hidden');
+                if (navName) navName.textContent = `Hi, ${currentUser.fullName}!`;
+                if (checkoutFullName && !checkoutFullName.value) checkoutFullName.value = currentUser.fullName;
+
+                if (mobileAuthNav) {
+                    mobileAuthNav.innerHTML = `
+                        <div class="flex items-center justify-between py-1 px-1">
+                            <span class="font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                                <i data-lucide="user" class="w-3.5 h-3.5 text-brand-vivid dark:text-brand-neon"></i>
+                                Hi, ${currentUser.fullName}!
+                            </span>
+                            <button onclick="handleUserLogout(); toggleMobileMenu();" type="button" class="text-xs font-bold text-red-500 hover:underline flex items-center gap-1">
+                                <i data-lucide="log-out" class="w-3.5 h-3.5"></i> Log Out
+                            </button>
+                        </div>
+                    `;
+                }
+            } else {
+                if (guestNav) guestNav.classList.remove('hidden');
+                if (loggedNav) loggedNav.classList.add('hidden');
+
+                if (mobileAuthNav) {
+                    mobileAuthNav.innerHTML = `
+                        <div class="grid grid-cols-2 gap-2 pt-1">
+                            <button onclick="openLoginModal(); toggleMobileMenu();" type="button" class="w-full py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-white border border-slate-300 dark:border-slate-700 font-bold text-center">
+                                Log In
+                            </button>
+                            <button onclick="openRegisterModal(); toggleMobileMenu();" type="button" class="w-full py-1.5 rounded-lg vivid-btn-gradient text-white font-bold text-center shadow">
+                                Register
+                            </button>
+                        </div>
+                    `;
+                }
+            }
+
+            if (window.lucide) lucide.createIcons();
+        }
+
+        // REGISTRATION HANDLER
+        function openRegisterModal() {
+            document.getElementById('registerError').classList.add('hidden');
+            document.getElementById('registerModal').classList.remove('hidden');
+        }
+
+        function closeRegisterModal() {
+            document.getElementById('registerModal').classList.add('hidden');
+        }
+
+        function switchToLoginModal() {
+            closeRegisterModal();
+            openLoginModal();
+        }
+
+        function handleCustomerRegister(e) {
+            e.preventDefault();
+            const fullName = document.getElementById('regFullName').value.trim();
+            const email = document.getElementById('regEmail').value.trim().toLowerCase();
+            const password = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('regConfirmPassword').value;
+            const errEl = document.getElementById('registerError');
+
+            // 1. Validate fields
+            if (!fullName || !email || !password || !confirmPassword) {
+                errEl.textContent = "Please fill in all fields.";
+                errEl.classList.remove('hidden');
+                return;
+            }
+
+            if (password.length < 6) {
+                errEl.textContent = "Password must be at least 6 characters long.";
+                errEl.classList.remove('hidden');
+                return;
+            }
+
+            // 2. Check passwords match
+            if (password !== confirmPassword) {
+                errEl.textContent = "Passwords do not match!";
+                errEl.classList.remove('hidden');
+                return;
+            }
+
+            // 3. Prevent duplicate email registration
+            const existing = registeredUsers.find(u => u.email === email);
+            if (existing) {
+                errEl.textContent = "An account with this email already exists.";
+                errEl.classList.remove('hidden');
+                return;
+            }
+
+            // 4. Save registered user in localStorage
+            const newUser = {
+                id: Date.now(),
+                fullName,
+                email,
+                password
+            };
+            registeredUsers.push(newUser);
+            saveUsersToStorage();
+
+            errEl.classList.add('hidden');
+            closeRegisterModal();
+
+            // Automatically log in newly registered user & redirect to homepage
+            saveCurrentUserSession({ id: newUser.id, fullName: newUser.fullName, email: newUser.email });
+            window.location.hash = "";
+            showToast("Registration Successful!", `Welcome, ${newUser.fullName}!`);
+            
+            if (window.confetti) {
+                confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
+            }
+        }
+
+        // LOGIN HANDLER
+        function openLoginModal() {
+            document.getElementById('loginError').classList.add('hidden');
+            document.getElementById('loginModal').classList.remove('hidden');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.add('hidden');
+        }
+
+        function switchToRegisterModal() {
+            closeLoginModal();
+            openRegisterModal();
+        }
+
+        function handleCustomerLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+            const password = document.getElementById('loginPassword').value;
+            const errEl = document.getElementById('loginError');
+
+            // Verify credentials against localStorage users
+            const matchedUser = registeredUsers.find(u => u.email === email && u.password === password);
+
+            if (matchedUser) {
+                errEl.classList.add('hidden');
+                closeLoginModal();
+                saveCurrentUserSession({ id: matchedUser.id, fullName: matchedUser.fullName, email: matchedUser.email });
+                
+                // Redirect users to homepage
+                window.location.hash = "";
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                showToast("Welcome Back!", `Hi, ${matchedUser.fullName}!`);
+            } else {
+                errEl.textContent = "Incorrect email or password!";
+                errEl.classList.remove('hidden');
+            }
+        }
+
+        // LOGOUT HANDLER
+        function handleUserLogout() {
+            saveCurrentUserSession(null);
+            window.location.hash = "";
+            showToast("Logged Out", "You have been logged out successfully.");
         }
 
         // DARK / LIGHT THEME TOGGLE
@@ -2127,6 +2447,10 @@
             document.getElementById('couponFeedback').className = "text-[10px] text-slate-500";
             document.getElementById('couponStatusBadge').classList.add('hidden');
             appliedCoupon = null;
+
+            if (currentUser && document.getElementById('checkoutFullName')) {
+                document.getElementById('checkoutFullName').value = currentUser.fullName;
+            }
 
             updateCheckoutTotals();
             document.getElementById('checkoutModal').classList.remove('hidden');
